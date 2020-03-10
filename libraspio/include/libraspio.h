@@ -1,12 +1,17 @@
 #ifndef libraspio
 #define libraspio
 
+enum pinValues {HIGH = 1, LOW = 0};
+enum pinState {INPUT = 1, OUTPUT = 0};
+
 void pinMode(short pin, int mode);
 
-void digitalWrite (short pin);
+void digitalWrite (short pin, int value);
 
-void digitalRead (short pin);
+int digitalRead (short pin);
 
 void blink(short pin, int frecuency, int duration);
+
+void simon (short pin_receiver, short pin_repeater, int duration);
 
 #endif

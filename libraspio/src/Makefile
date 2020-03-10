@@ -1,8 +1,9 @@
 CC = gcc
+#/opt/poky/2.5.1/environment-setup-cortexa7hf-neon-vfpv4-poky-linux-gnueabi
 SRC = main.c
 
 LIBNAME = libraspio
-LIBSO = ../lib/$(LIBNAME).a
+LIBA = ../lib/$(LIBNAME).a
 
 OUT = ../bin/raspio
 
@@ -12,8 +13,11 @@ LDFLAGS = -L../lib
 #Create executables
 
 executables:
-		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBSO)
-		export LD_LIBRARY_PATH=$$LD_LIBRARY_PATH:./lib
+		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBA)
+		$(info run "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib to finish the process")
+
+raspio:
+		$$CC -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBA)
 		
 clean:
 		rm $(OUT)

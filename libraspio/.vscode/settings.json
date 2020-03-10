@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "libraspio.h": "c"
+        "libraspio.h": "c",
+        "unistd.h": "c"
     }
 }

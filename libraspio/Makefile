@@ -9,6 +9,10 @@ all:
 run:
 	$(OUT)
 
+raspio:
+		make -C $(LIBDIR) raspio
+		make -C $(LIBSRC) raspio
+
 reset:
 	$(info cleaning the folder...)
 	rm -f *.o || :
