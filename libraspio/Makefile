@@ -1,0 +1,18 @@
+LIBDIR = lib/
+LIBSRC = src/
+OUT = bin/raspio
+
+all:
+	make -C $(LIBDIR)
+	make -C $(LIBSRC)
+	
+run:
+	$(OUT)
+
+reset:
+	$(info cleaning the folder...)
+	rm -f *.o || :
+	rm -f lib/*.a || :
+	rm -f lib/*.so || :
+	rm -f bin/*
+	clear
