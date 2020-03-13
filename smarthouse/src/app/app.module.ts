@@ -12,7 +12,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from './../environments/environment';
 import {AngularFirestoreModule,FirestoreSettingsToken} from '@angular/fire/firestore';
-import { userInfo } from 'os';
+
 
 
 @NgModule({
@@ -21,6 +21,7 @@ import { userInfo } from 'os';
   imports: [BrowserModule, IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     AngularFireAuthModule
   
   ],

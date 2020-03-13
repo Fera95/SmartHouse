@@ -19,6 +19,14 @@ const routes: Routes = [
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule),
     canActivate : [AuthGuard]
   },
+  {
+    path: 'casa-details',
+    loadChildren: () => import('./pages/casa-details/casa-details.module').then( m => m.CasaDetailsPageModule)
+  },
+  {
+    path: 'casa-details/:id',
+    loadChildren: () => import('./pages/casa-details/casa-details.module').then( m => m.CasaDetailsPageModule)
+  },
 ];
 
 @NgModule({
