@@ -5,8 +5,16 @@ import { Observable } from 'rxjs';
  
 export interface Casa {
   id?: string,
-  name: string,
-  notes: string
+  Luz1: string,
+  Luz2: string,
+  Luz3: string,
+  Luz4: string,
+  Luz5: string,
+  Puerta1: string,
+  Puerta2: string,
+  Puerta3: string,
+  Puerta4: string,
+  Puerta5: string
 }
  
 @Injectable({
@@ -43,12 +51,22 @@ export class CasaService {
     );
   }
  
-  addCasa(casa: Casa): Promise<DocumentReference> {
-    return this.casaCollection.add(casa);
-  }
+ 
  
   updateCasa(casa: Casa): Promise<void> {
-    return this.casaCollection.doc(casa.id).update({ name: casa.name, notes: casa.notes });
+    return this.casaCollection.doc(casa.id).update({ 
+      Luz1: casa.Luz1, 
+      Luz2: casa.Luz2, 
+      Luz3: casa.Luz2, 
+      Luz4: casa.Luz1, 
+      Luz5: casa.Luz1, 
+      Puerta1: casa.Puerta1, 
+      Puerta2: casa.Puerta2, 
+      Puerta3: casa.Puerta3, 
+      Puerta4: casa.Puerta4, 
+      Puerta5: casa.Puerta5
+    
+    });
   }
  
   deleteIdea(id: string): Promise<void> {

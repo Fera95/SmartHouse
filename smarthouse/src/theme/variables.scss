@@ -2,7 +2,29 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+
+
+
+
 :root {
+
+
+  .dark-theme{
+    --ion-color-primary: #eb4b58;
+    --ion-color-primary-rgb: 235,75,88;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb:255,255,255;
+    --ion-color-primary-shade: #cf424d;
+    --ion-color-primary-tint: #ed5d69;
+
+    ion-content{
+        --background: #2c4b84;
+    }
+
+}
+
+
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;

@@ -8,8 +8,28 @@
 
  
   <ion-list>
-    <ion-item  *ngFor="let casa of (casas | async)">
-      {{casa.name}}, {{casa.notes}}
+    <ion-item  *ngFor="let casa of (casas | async)" >
+    {{casa.Luz1}}, 
+    {{casa.Luz2}},
+    {{casa.Luz3}}, 
+    {{casa.Luz4}}, 
+    {{casa.Luz5}}, 
+    {{casa.Puerta1}},
+    {{casa.Puerta2}},  
+    {{casa.Puerta3}}, 
+    {{casa.Puerta4}}, 
+    {{casa.Puerta5}}
     </ion-item>
   </ion-list>
+
+  <ion-button size="large" routerLink="/home">Volver</ion-button>
+  
+  <ion-button (click)="enableDark()" >
+     Enable dark
+  </ion-button>
+
+  <ion-button (click)="enableLight()" >
+    Enable light
+ </ion-button>
+
 </ion-content>
