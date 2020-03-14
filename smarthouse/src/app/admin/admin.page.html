@@ -4,11 +4,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content > 
 
  
   <ion-list>
-    <ion-item  *ngFor="let casa of (casas | async)" >
+    <div style="display: none;" *ngFor="let casa of (casas | async)" >
     {{casa.Luz1}}, 
     {{casa.Luz2}},
     {{casa.Luz3}}, 
@@ -19,17 +19,29 @@
     {{casa.Puerta3}}, 
     {{casa.Puerta4}}, 
     {{casa.Puerta5}}
-    </ion-item>
+  
+    <div *ngIf="casa; then callfunction; else nofunction"></div>
+    <ng-template #callfunction>
+      {{print(casa.Luz1,casa.Luz2,casa.Luz3,casa.Luz4,casa.Luz5,casa.Puerta1,casa.Puerta2,casa.Puerta3,casa.Puerta4,casa.Puerta5)}},
+      {{cambiarTema()}}
+    </ng-template>
+    <ng-template #nofunction>
+     <!-- something else -->
+    </ng-template>
+  </div>
   </ion-list>
 
-  <ion-button size="large" routerLink="/home">Volver</ion-button>
-  
-  <ion-button (click)="enableDark()" >
-     Enable dark
+  <ion-button   size="large" routerLink="/home">
+    <ion-icon class="luz1"name="flash-outline"></ion-icon>
   </ion-button>
 
-  <ion-button (click)="enableLight()" >
-    Enable light
- </ion-button>
+  <ion-button   size="large" routerLink="/home">
+    <ion-icon class="puerta1"name="warning-outline"></ion-icon>
+  </ion-button>
+
+  
+  
+  
+
 
 </ion-content>

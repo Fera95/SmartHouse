@@ -14,7 +14,10 @@ import { ThemeService } from '../services/theme.service';
 })
 export class AdminPage implements OnInit {
 
-  private casas: Observable<Casa[]>;
+  public casas: Observable<Casa[]>;
+
+  public estado: string;
+
   
  //se agrega servicio al constructor
   constructor(public servicio:AuthService,private casaService: CasaService,
@@ -24,12 +27,25 @@ export class AdminPage implements OnInit {
      this.casas = this.casaService.getCasas();
   }
 
-  enableDark(){
-    this.theme.enableDark();
+  print(dato1 :any,
+    dato2 :any,
+    dato3 :any,
+    dato4 :any,
+    dato5 :any,
+    dato6 :any,
+    dato7 :any,
+    dato8 :any,
+    dato9 :any,
+    dato10 :any,
+    ){
+        var dato =dato1+dato2+dato3+dato4+dato5+dato6+dato7+dato8+dato9+dato10;
+        this.estado = dato.toString();
   }
 
-  enableLight(){
-    this.theme.enableLight();
+
+
+  cambiarTema(){
+    this.theme.cambiarTema(this.estado);
   }
 
   

@@ -3,6 +3,13 @@
 
 /** Ionic CSS Variables **/
 
+.luz1{
+  display: none;
+}
+
+.puerta1{
+  display: flex;
+}
 
 
 
@@ -10,20 +17,30 @@
 
 
   .dark-theme{
-    --ion-color-primary: #eb4b58;
-    --ion-color-primary-rgb: 235,75,88;
-    --ion-color-primary-contrast: #ffffff;
-    --ion-color-primary-contrast-rgb:255,255,255;
-    --ion-color-primary-shade: #cf424d;
-    --ion-color-primary-tint: #ed5d69;
+    
 
     ion-content{
-        --background: #2c4b84;
+      --background: url('/assets/img/background/imagen1.png') no-repeat 100% 100%;
     }
+
+    
+
+    
+    
 
 }
 
 
+.light-theme{
+    
+
+  ion-content{
+    --background: url('/assets/img/background/imagen2.png') no-repeat 100% 100%;
+  }
+
+ 
+
+}
 
   /** primary **/
   --ion-color-primary: #3880ff;

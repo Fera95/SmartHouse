@@ -16,11 +16,14 @@ export interface Casa {
   Puerta4: string,
   Puerta5: string
 }
+
  
 @Injectable({
   providedIn: 'root'
 })
 export class CasaService {
+
+
   private casas: Observable<Casa[]>;
   private casaCollection: AngularFirestoreCollection<Casa>;
  
@@ -50,6 +53,9 @@ export class CasaService {
       })
     );
   }
+
+
+ 
  
  
  
