@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
 import {User} from '../shared/user.class';
+import { ToastController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -9,7 +11,7 @@ import {User} from '../shared/user.class';
 })
 export class LoginPage implements OnInit {
   user: User = new User();
-  constructor(private router: Router, private authSvc: AuthService) { }
+  constructor(private toastCtrl: ToastController, private router: Router, private authSvc: AuthService) { }
 
   ngOnInit() {
   }
@@ -18,8 +20,21 @@ export class LoginPage implements OnInit {
     const user = await this.authSvc.onLogin(this.user);
   
   if(user){
+    this.showToast('Loggeado');
     console.log('Loggeo exitoso');
     this.router.navigateByUrl('/');
   }
+  else{
+    
+    this.showToast('Email y/o contraseña invalidos');
+  }
 }
+
+showToast(msg) {
+  this.toastCtrl.create({
+    message: msg,
+    duration: 2000
+  }).then(toast => toast.present());
+}
+
 }

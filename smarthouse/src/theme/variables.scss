@@ -2,7 +2,46 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+
+.luz1{
+  display: none;
+}
+
+.puerta1{
+  display: flex;
+}
+
+
+
 :root {
+
+
+  .dark-theme{
+    
+
+    ion-content{
+      --background: url('/assets/img/background/imagen1.png') no-repeat 100% 100%;
+    }
+
+    
+
+    
+    
+
+}
+
+
+.light-theme{
+    
+
+  ion-content{
+    --background: url('/assets/img/background/imagen2.png') no-repeat 100% 100%;
+  }
+
+ 
+
+}
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;

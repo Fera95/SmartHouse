@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from './../environments/environment';
+import {AngularFirestoreModule,FirestoreSettingsToken} from '@angular/fire/firestore';
+
 
 
 @NgModule({
@@ -19,14 +21,16 @@ import {environment} from './../environments/environment';
   imports: [BrowserModule, IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     AngularFireAuthModule
   
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide: FirestoreSettingsToken, useValue:{}}
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule {}

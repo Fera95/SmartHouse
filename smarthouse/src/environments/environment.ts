@@ -4,15 +4,16 @@
 
 export const environment = {
   production: false,
-  firebaseConfig:{
-    apiKey: "AIzaSyCZ7z2DYWTlVggAWQiE6-s03uCvgDAKfYA",
-    authDomain: "smarthouse-11300.firebaseapp.com",
-    databaseURL: "https://smarthouse-11300.firebaseio.com",
-    projectId: "smarthouse-11300",
-    storageBucket: "smarthouse-11300.appspot.com",
-    messagingSenderId: "1001786689223",
-    appId: "1:1001786689223:web:84a2c1bd10faf2469920e2",
-    measurementId: "G-GTTZTRDCSR"
+  firebaseConfig :   {
+    apiKey: "AIzaSyCmnqe1sRfogwGpd957pOPdw7JaBqoK4Ws",
+    authDomain: "smarthouse-emb.firebaseapp.com",
+    databaseURL: "https://smarthouse-emb.firebaseio.com",
+    projectId: "smarthouse-emb",
+    storageBucket: "smarthouse-emb.appspot.com",
+    messagingSenderId: "425195900251",
+    appId: "1:425195900251:web:5d0b6a1f10c0c08f9e9e7e",
+    measurementId: "G-DBWNB0ZZCK"
+  
   }
 
 };
