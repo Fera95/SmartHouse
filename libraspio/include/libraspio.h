@@ -10,7 +10,7 @@ void digitalWrite (short pin, int value);
 
 int digitalRead (short pin);
 
-void blink(short pin, int frecuency, int duration);
+void blink(short pin, int frecuency, double duration);
 
 void simon (short pin_receiver, short pin_repeater, int duration);
 

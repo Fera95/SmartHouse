@@ -26,20 +26,49 @@
 
 int main () {
 	// SETUP
+	printf("Starting setup test...\n");
+
 	pinMode(led_drums, OUTPUT);
 	pinMode(led_studio, OUTPUT);
 	pinMode(door_bedroom, INPUT);
+
+	printf("Test finished...\n");
+	sleep(1);
+	printf("Starting digWrite test...\n");
+
+	digitalWrite(led_drums, HIGH);
+	sleep(1);
+	digitalWrite(led_studio, HIGH);
+	sleep(1);
+	digitalWrite(led_studio, LOW);
+	sleep(1);
+	digitalWrite(led_drums, LOW);
+	sleep(1);
+
+	printf("Test finished...\n");
+	sleep(1);
+
+	printf("Starting digRead test...\n");
+
+	for(int i = 0; i <5; i++) {
+		int rd = digitalRead(door_bedroom);
+		printf ("%d \n", rd);
+		sleep(1);
+	}	
 	
+	printf("Test finished...\n");
+	sleep(1);
+
+	printf("Starting blink test...");
+
 	//blink(led_drums, 2, 5);
-
-	for (int i = 0; i<5; i++) {
-		digitalWrite(led_drums, HIGH);
-		usleep(500000);
-		digitalWrite(led_drums, LOW);
-		usleep(500000);
+	blink(led_drums, 2, 10);
+	printf("Test finished...\n");
+	sleep(1);
 	
+	simon(door_bedroom, led_studio, 10);
+	sleep(1);
 
-	simon(door_bedroom, led_studio, 5);
 
 	/* LOOP
 	int loop = 1;

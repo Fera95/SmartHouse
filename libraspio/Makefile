@@ -15,8 +15,7 @@ raspio:
 
 reset:
 	$(info cleaning the folder...)
-	rm -f *.o || :
 	rm -f lib/*.a || :
-	rm -f lib/*.so || :
+	rm -f lib/*.o || :
 	rm -f bin/*
 	clear
