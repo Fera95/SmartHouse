@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <unistd.h>
+#include <string.h>
+#include <pthread.h>
 #include <libraspio.h>
 
 							// 3V3 power
@@ -8,13 +11,13 @@
 #define led_bathroom 3		// GPIO3
 #define led_hallway	4		// GPIO4
 							// GND
-#define led_drums 17		// GPIO17
+#define led_kitchen 17		// GPIO17
 #define led_studio 27		// GPIO27
 #define door_bedroom 22		// GPIO22
 							// 3V3 power
 #define door_bathroom 10	// GPIO10
 #define door_hallway 9		// GPIO9
-#define door_drums 11		// GPIO11
+#define door_kitchen 11		// GPIO11
 							// GND
 							// GPIO0
 #define door_studio 5		// GPIO5
@@ -24,57 +27,81 @@
 							// GPIO26
 							// GND
 
-int main () {
-	// SETUP
-	printf("Starting setup test...\n");
-
-	pinMode(led_drums, OUTPUT);
-	pinMode(led_studio, OUTPUT);
-	pinMode(door_bedroom, INPUT);
-
-	printf("Test finished...\n");
-	sleep(1);
-	printf("Starting digWrite test...\n");
-
-	digitalWrite(led_drums, HIGH);
-	sleep(1);
-	digitalWrite(led_studio, HIGH);
-	sleep(1);
-	digitalWrite(led_studio, LOW);
-	sleep(1);
-	digitalWrite(led_drums, LOW);
-	sleep(1);
-
-	printf("Test finished...\n");
-	sleep(1);
-
-	printf("Starting digRead test...\n");
-
-	for(int i = 0; i <5; i++) {
-		int rd = digitalRead(door_bedroom);
-		printf ("%d \n", rd);
+/** makes all leds used in the smartHouse project blink at the same time
+ */
+void* eternal_blink(){
+	// Blink forever!
+	while (1) {
+		digitalWrite(led_bedroom, HIGH);
+		digitalWrite(led_bathroom, HIGH);
+		digitalWrite(led_hallway, HIGH);
+		digitalWrite(led_kitchen, HIGH);
+		digitalWrite(led_studio, HIGH);
 		sleep(1);
-	}	
+		digitalWrite(led_bedroom, LOW);
+		digitalWrite(led_bathroom, LOW);
+		digitalWrite(led_hallway, LOW);
+		digitalWrite(led_kitchen, LOW);
+		digitalWrite(led_studio, LOW);
+		sleep(1);
+	}
+}
+
+/** makes all leds used in the smartHouse project blink at the same time
+ */
+void* eternal_write(){
+	led_array_t* update;
+	update = (led_array_t*) malloc(sizeof(led_array_t));
+	while (1) {
+		//TODO: read_data(update); // fill struct with current data
+		digitalWrite(led_bedroom, update->bedroom);
+		digitalWrite(led_bathroom, update->bathroom);
+		digitalWrite(led_hallway, update->hallway);
+		digitalWrite(led_kitchen, update->kitchen);
+		digitalWrite(led_studio, update->studio);
+		sleep(1);
+	}
+}
+
+void* eternal_read () {
+	while (1){
+		system("clear");
+		printf(" bedroom door is: %d\n", digitalRead(door_bedroom));
+		printf("bathroom door is: %d\n", digitalRead(door_bathroom));
+		printf(" hallway door is: %d\n", digitalRead(door_hallway));
+		printf(" kitchen door is: %d\n", digitalRead(door_kitchen));
+		printf("  studio door is: %d\n", digitalRead(door_studio));
+		//send_data();
+	}
+}
+
+int main () {
+
+	// SETUP
+	pthread_t leds;
+	pthread_t doors;
+
+	pinMode(led_bedroom, OUTPUT);
+	pinMode(led_bathroom, OUTPUT);
+	pinMode(led_hallway, OUTPUT);
+	pinMode(led_kitchen, OUTPUT);
+	pinMode(led_studio, OUTPUT);
 	
-	printf("Test finished...\n");
-	sleep(1);
+	pinMode(door_bedroom, INPUT);
+	pinMode(door_bathroom, INPUT);
+	pinMode(door_hallway, INPUT);
+	pinMode(door_kitchen, INPUT);
+	pinMode(door_studio, INPUT);
 
-	printf("Starting blink test...");
+	// LOOP
 
-	//blink(led_drums, 2, 5);
-	blink(led_drums, 2, 10);
-	printf("Test finished...\n");
-	sleep(1);
-	
-	simon(door_bedroom, led_studio, 10);
-	sleep(1);
+	if (pthread_create(&leds, 0, &eternal_blink, NULL));
+		printf("Error creating thread leds\n");
+	if (pthread_create(&doors, 0, &eternal_read, NULL));
+		printf("Error creating thread doors\n");
 
-
-	/* LOOP
-	int loop = 1;
-	while (0) 	{
-		loop = 0;
-	}*/
+	pthread_join(leds, NULL);
+	pthread_join(doors, NULL);
 	
 	return 0;
 }

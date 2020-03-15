@@ -1,5 +1,4 @@
 #CC = gcc -c
-#CC = /opt/poky/2.5.1/environment-setup-cortexa7hf-neon-vfpv4-poky-linux-gnueabi -c
 AR = ar rv
 RL = ranlib
 NM = nm -s

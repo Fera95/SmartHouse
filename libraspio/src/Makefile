@@ -14,11 +14,11 @@ LDFLAGS = -L../lib
 #Create executables
 
 executables:
-		$(CC) -o $(OUTX) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBA)
+		$(CC) -o $(OUTX) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBA) -pthread
 		$(info run "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./lib to finish the process")
 
 raspio:
-		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBA)
+		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBA) -pthread
 		#$CC -o ../bin/raspio main.c -I../include -L../lib ../lib/libraspio.a
 		
 clean:
