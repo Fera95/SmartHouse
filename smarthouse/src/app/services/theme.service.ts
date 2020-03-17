@@ -15,7 +15,7 @@ export class ThemeService {
   }
 
   cambiarTema(estado:string){
-     if(estado=="1100010000"){
+     if(estado=="1"){
       this.enableDark();
      }
      else{

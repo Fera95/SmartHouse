@@ -22,8 +22,7 @@
   
     <div *ngIf="casa; then callfunction; else nofunction"></div>
     <ng-template #callfunction>
-      {{print(casa.Luz1,casa.Luz2,casa.Luz3,casa.Luz4,casa.Luz5,casa.Puerta1,casa.Puerta2,casa.Puerta3,casa.Puerta4,casa.Puerta5)}},
-      {{cambiarTema()}}
+      {{setData(casa.Luz1,casa.Luz2,casa.Luz3,casa.Luz4,casa.Luz5,casa.Puerta1,casa.Puerta2,casa.Puerta3,casa.Puerta4,casa.Puerta5)}}
     </ng-template>
     <ng-template #nofunction>
      <!-- something else -->
@@ -31,13 +30,66 @@
   </div>
   </ion-list>
 
-  <ion-button   size="large" routerLink="/home">
-    <ion-icon class="luz1"name="flash-outline"></ion-icon>
+
+<!-- boton para regresar -->
+<ion-button size="large" routerLink="/home" (click)= "temaSalida()">Volver</ion-button>
+
+<!-- botones para las luces -->
+
+  <ion-button class="luz1 boton" color="warning" size="large" [style]="getDynamicLuz1()" disabled >
+    <img class="img "src="./../../assets/icon/lighIcon.png">
+    <div size="1" >1</div>
   </ion-button>
 
-  <ion-button   size="large" routerLink="/home">
-    <ion-icon class="puerta1"name="warning-outline"></ion-icon>
+  <ion-button class="luz2 boton" color="warning"  size="large" [style]="getDynamicLuz2()" disabled>
+    <img class="img "src="./../../assets/icon/lighIcon.png">
+    <div size="1" >2</div>
   </ion-button>
+
+  <ion-button class="luz3 boton" color="warning" size="large" [style]="getDynamicLuz3()" disabled>
+    <img class="img "src="./../../assets/icon/lighIcon.png">
+    <div size="1" >3</div>
+  </ion-button>
+
+  <ion-button class="luz4 boton"  color="warning" size="large" [style]="getDynamicLuz4()" disabled>
+    <img class="img "src="./../../assets/icon/lighIcon.png">
+    <div size="1" >4</div>
+  </ion-button>
+
+  <ion-button class="luz5 boton" color="warning"  size="large" [style]="getDynamicLuz5()" disabled>
+    <img class="img "src="./../../assets/icon/lighIcon.png">
+    <div size="1" >5</div>
+  </ion-button>
+
+
+<!-- botones para las puertas -->
+
+  <ion-button  class="puerta1 boton"  color="warning" size="large" [style]="getDynamicPuerta1()" disabled>
+    <img class="img "src="./../../assets/icon/doorIcon.png">
+    <div size="1" >1</div>
+  </ion-button>
+
+  <ion-button  class="puerta2 boton" color="warning" size="large" [style]="getDynamicPuerta2()" disabled>
+    <img class="img "src="./../../assets/icon/doorIcon.png">
+    <div size="1" >2</div>
+  </ion-button>
+
+  <ion-button  class="puerta3 boton"  color="warning" size="large" [style]="getDynamicPuerta3()" disabled>
+    <img class="img "src="./../../assets/icon/doorIcon.png">
+    <div size="1" >3</div>
+  </ion-button>
+
+  <ion-button  class="puerta4 boton" color="warning" size="large" [style]="getDynamicPuerta4()" disabled>
+    <img class="img "src="./../../assets/icon/doorIcon.png">
+    <div size="1" >4</div>
+  </ion-button>
+
+  <ion-button  class="puerta5 boton" color="warning" size="large" [style]="getDynamicPuerta5()" disabled>
+    <img class="img "src="./../../assets/icon/doorIcon.png">
+    <div size="1" >5</div>
+  </ion-button>
+
+
 
   
   
