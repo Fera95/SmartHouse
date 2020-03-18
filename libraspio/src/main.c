@@ -50,8 +50,8 @@ void* eternal_blink(){
 /** makes all leds used in the smartHouse project blink at the same time
  */
 void* eternal_write(){
-	led_array_t* update;
-	update = (led_array_t*) malloc(sizeof(led_array_t));
+	devices_t* update;
+	update = (devices_t*) malloc(sizeof(devices_t));
 	while (1) {
 		//TODO: read_data(update); // fill struct with current data
 		digitalWrite(led_bedroom, update->bedroom);

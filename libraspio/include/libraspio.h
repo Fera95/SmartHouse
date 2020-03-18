@@ -11,7 +11,7 @@ typedef struct {
 	uint8_t hallway;
 	uint8_t kitchen;
 	uint8_t studio;
-} led_array_t;
+} devices_t;
 
 void pinMode(short pin, int mode);
 

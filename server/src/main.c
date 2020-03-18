@@ -18,47 +18,44 @@
 #include <stdarg.h>
 #include <sys/syscall.h> // For call to gettid
 #include <libserver.h>
-#include <libarduinocomms.h>
 
-server_t server;
-client_t client;
+server_t *server;
+client_t *client;
 int in_use;
 
 void close_socket(){
     printf("Killing\n");
-    close_server(&server);
+    close_server(server);
     if(in_use){
-        close_client(&client);
+        close_client(client);
     }
     kill(getpid(), SIGKILL);
 }
 
 int main(int argc, char *argv[]) {
     int port = 8080;
-    char* arduino_file = "/dev/arduino0";
     if(argc > 1) port = atoi(argv[1]);
-    if(argc > 2) arduino_file = argv[2];
-    
-    // server_t server;
-    if(init_server(&server, port)) exit(1);
+
+    //server_t* server;
+    server = (server_t*) malloc(sizeof(server_t));
+    client = (client_t*) malloc(sizeof(client_t));
+    if(init_server(server, port)) exit(1);
     printf("Now listening on port %d\n", port);
     signal(SIGINT, close_socket);
-    game_t current_game;
-    arduino_t *arduino = (arduino_t *) malloc(sizeof(arduino_t));
-    arduino_init(arduino, arduino_file);
-    current_game.arduino = arduino;
-    server.game = &current_game;
     
-    init_game(&server);
+    devices_t *my_devices;
+    my_devices = (devices_t*) malloc(sizeof(devices_t));
+    server->devices = my_devices;
+    init_devices(server);
     
     while (1) {
-        if(accept_client(&server, &client) == 0) {
+        if(accept_client(server, client) == 0) {
             in_use=1;
             //printf("New client received coming from ip %s\n", client.ip);
-            process_client(&client, &server);
+            process_client(client, server);
             in_use=0;
-            close_client(&client);
+            close_client(client);
         }
     }
-    close_server(&server);
+    close_server(server);
 }
