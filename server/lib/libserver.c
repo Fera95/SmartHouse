@@ -118,7 +118,7 @@ uint8_t close_client(client_t *client) {
 uint8_t process_client(client_t *client, server_t *server) {
 	trim_query(client);				// First line
 	delimit_query(client);			// Removes GET till space
-	process_query(client, server);	// Processes that query
+	process_query(client, server);	// Process that query
 }
 
 void trim_query(client_t *client) {
@@ -185,6 +185,7 @@ uint8_t set_params(const char *query, server_t *server, int function) {
 
 uint8_t process_query(client_t *client, server_t *server) {
     char *query = client->buffer;
+    printf("Client sent: %s\n", query);
     if(strcmp(query, "/dummy") == 0) {
         send_text(client, "Im dummy");
     } else if(strncmp(query, "/setup", 6) == 0) {

@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     while (1) {
         if(accept_client(server, client) == 0) {
             in_use=1;
-            //printf("New client received coming from ip %s\n", client.ip);
+            printf("New client received coming from ip %s\n", client->ip);
             process_client(client, server);
             in_use=0;
             close_client(client);
