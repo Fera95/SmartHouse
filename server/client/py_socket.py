@@ -12,6 +12,6 @@ while (True):
     msg = input()
     msg = msg.encode()
     s.send(msg)
-    data = s.recv(len(msg)+1000000000)
+    data = s.recv(len(msg)+40000)
     s.close()
     print ("Received: ", data.decode())

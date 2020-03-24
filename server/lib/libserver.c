@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include <dirent.h>
 #include <libserver.h>
+//#include "../include/libraspio.h"
 
 char html_web_error[] =
     "HTTP/1.1 200 Ok\r\n"
@@ -94,6 +95,7 @@ char *get_ip(client_t *client) {
     char *ip = inet_ntoa(addr_in->sin_addr);
     return ip;
 }
+
 uint8_t accept_client(server_t *server, client_t *client) {
     client->length = sizeof(client->client_sockaddr);
     client->socket_descriptor = accept(server->socket_descriptor,
@@ -110,6 +112,7 @@ uint8_t accept_client(server_t *server, client_t *client) {
     client->ip = get_ip(client);
     return 0;
 }
+
 uint8_t close_client(client_t *client) {
 	close(client->socket_descriptor);
 	return 0;
@@ -183,25 +186,105 @@ uint8_t set_params(const char *query, server_t *server, int function) {
     return 0;
 }
 
+/** returns the JSON that matches the status of the doors.
+ * \param code a binary-made 5 bit code to select the correct json
+ */
+const char * jsonPicker (int code) {
+	switch (code) {
+		case  0: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 0, \"led_4\": 0, \"led_5\": 0 }");
+		case  1: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 0, \"led_4\": 0, \"led_5\": 1 }");
+		case  2: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 0, \"led_4\": 1, \"led_5\": 0 }");
+		case  3: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 0, \"led_4\": 1, \"led_5\": 1 }");
+		case  4: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 1, \"led_4\": 0, \"led_5\": 0 }");
+		case  5: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 1, \"led_4\": 0, \"led_5\": 1 }");
+		case  6: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 1, \"led_4\": 1, \"led_5\": 0 }");
+		case  7: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 1, \"led_4\": 1, \"led_5\": 1 }");
+		
+		case  8: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 0, \"led_4\": 0, \"led_5\": 0 }");
+		case  9: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 0, \"led_4\": 0, \"led_5\": 1 }");
+		case 10: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 0, \"led_4\": 1, \"led_5\": 0 }");
+		case 11: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 0, \"led_4\": 1, \"led_5\": 1 }");
+		case 12: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 1, \"led_4\": 0, \"led_5\": 0 }");
+		case 13: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 1, \"led_4\": 0, \"led_5\": 1 }");
+		case 14: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 1, \"led_4\": 1, \"led_5\": 0 }");
+		case 15: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 1, \"led_4\": 1, \"led_5\": 1 }");
+		
+		case 16: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 0, \"led_4\": 0, \"led_5\": 0 }");
+		case 17: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 0, \"led_4\": 0, \"led_5\": 1 }");
+		case 18: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 0, \"led_4\": 1, \"led_5\": 0 }");
+		case 19: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 0, \"led_4\": 1, \"led_5\": 1 }");
+		case 20: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 1, \"led_4\": 0, \"led_5\": 0 }");
+		case 21: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 1, \"led_4\": 0, \"led_5\": 1 }");
+		case 22: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 1, \"led_4\": 1, \"led_5\": 0 }");
+		case 23: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 1, \"led_4\": 1, \"led_5\": 1 }");
+		
+		case 24: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 0, \"led_4\": 0, \"led_5\": 0 }");
+		case 25: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 0, \"led_4\": 0, \"led_5\": 1 }");
+		case 26: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 0, \"led_4\": 1, \"led_5\": 0 }");
+		case 27: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 0, \"led_4\": 1, \"led_5\": 1 }");
+		case 28: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 1, \"led_4\": 0, \"led_5\": 0 }");
+		case 29: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 1, \"led_4\": 0, \"led_5\": 1 }");
+		case 30: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 1, \"led_4\": 1, \"led_5\": 0 }");
+		case 31: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 1, \"led_4\": 1, \"led_5\": 1 }");
+		default: return("{\"Status\": \"Ok\"}");
+	}
+}
+
 uint8_t process_query(client_t *client, server_t *server) {
     char *query = client->buffer;
     printf("Client sent: %s\n", query);
+    const char s[2] = ":";
+	char str[80];
+	strcpy(str, query);
+
+    // Parse expected query
+	char *token;
+    token = strtok(str, s);
+	server->leds->bedroom = atoi(token);
+	token = strtok(NULL, s);
+	server->leds->bathroom = atoi(token);
+	token = strtok(NULL, s);
+	server->leds->hallway = atoi(token);
+	token = strtok(NULL, s);
+	server->leds->kitchen = atoi(token);
+	token = strtok(NULL, s);
+	server->leds->studio = atoi(token);
+/*
+    digitalWrite(led_bedroom, server->leds->bedroom);
+    digitalWrite(led_bathroom, server->leds->bathroom);
+    digitalWrite(led_hallway, server->leds->>leds->hallway);
+    digitalWrite(led_kitchen, server->leds->kitchen);
+    digitalWrite(led_studio, server->leds->studio);
+
+    server->doors->bedroom = digitalRead(door_bedroom);
+    server->doors->bathroom = digitalRead(door_bathroom);
+    server->doors->hallway = digitalRead(door_hallway);
+    server->doors->kitchen = digitalRead(door_kitchen);
+    server->doors->studio = digitalRead(door_studio);
+*/
+	printf("led bedroom: %d\n", server->leds->bedroom);
+	printf("led bathroom: %d\n", server->leds->bathroom);
+	printf("led hallway: %d\n", server->leds->hallway);
+	printf("led kitchen: %d\n", server->leds->kitchen);
+	printf("led studio: %d\n", server->leds->studio);
+
+    server->doors->bedroom = 0;// digitalRead(door_bedroom);
+    server->doors->bathroom = 1;// digitalRead(door_bathroom);
+    server->doors->hallway = 0;//digitalRead(door_hallway);
+    server->doors->kitchen = 1;//digitalRead(door_kitchen);
+    server->doors->studio = 1;//digitalRead(door_studio);
+    
     if(strcmp(query, "/dummy") == 0) {
         send_text(client, "Im dummy");
-    } else if(strncmp(query, "/setup", 6) == 0) {
-        uint8_t ret = set_params(query, server, 0);
-        if(ret == TYPE_ERROR) send_json(client, "{\"Status\": \"Waiting\"}");
-        else if(ret == SYMBOL_ERROR) send_json(client, "{\"Status\": \"Busy\"}");
-        else if(ret == AMOUNT_ERROR) send_json(client, "{\"Status\": \"Full\"}");
-        else send_json(client, "{\"Status\": \"Ok\"}");
-    } else if(strncmp(query, "/move", 5) == 0) {
-        uint8_t ret = set_params(query, server, 1);
-        if(ret == POSITION_ERROR) send_json(client, "{\"Status\": \"Position full\"}");
-        else send_json(client, "{\"Status\": \"Ok\"}");
     } else if(strncmp(query, "/restart", 8) == 0) {
         init_devices(server);
     } else {
-        send_json(client, "{\"Status\": \"Ok\"}");
+        const char * json_msg = jsonPicker( server->doors->bedroom*16+
+                                            server->doors->bathroom*8+
+                                            server->doors->hallway*4+
+                                            server->doors->kitchen*2+
+                                            server->doors->studio*1);
+        send_json(client, json_msg);
     }
 }
 
@@ -210,7 +293,7 @@ uint8_t send_text(client_t *client, const char *text) {
     write(client->socket_descriptor, text, strlen(text));
 }
 uint8_t send_json(client_t *client, const char *text) {
-    write(client->socket_descriptor, html_web_json, sizeof(html_web_json) - 1);
+    //write(client->socket_descriptor, html_web_json, sizeof(html_web_json) - 1);
     write(client->socket_descriptor, text, strlen(text));
 }
 uint8_t send_error(client_t *client) {
@@ -218,12 +301,15 @@ uint8_t send_error(client_t *client) {
 }
 
 void init_devices(server_t *server) {
-    devices_t * init_device;
-	init_device = (devices_t*) malloc (sizeof(devices_t));
-    init_device = server->devices;
-    init_device->bedroom = 0;
-    init_device->bathroom = 0;
-    init_device->hallway = 1;
-    init_device->kitchen = 0;
-    init_device->studio = 0;
+    server->leds->bedroom = 0;
+    server->leds->bathroom = 0;
+    server->leds->hallway = 1;
+    server->leds->kitchen = 0;
+    server->leds->studio = 0;
+
+    server->doors->bedroom = 0;  // digitalRead(door_bedroom);
+    server->doors->bathroom = 1; // digitalRead(door_bathroom);
+    server->doors->hallway = 0;  //digitalRead(door_hallway);
+    server->doors->kitchen = 0;  //digitalRead(door_kitchen);
+    server->doors->studio = 0;   //digitalRead(door_studio);
 }

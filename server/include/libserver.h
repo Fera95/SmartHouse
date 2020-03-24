@@ -26,7 +26,8 @@ typedef struct {
     int socket_descriptor;
     int port;
     struct sockaddr_in direction;
-    devices_t* devices;
+    devices_t* leds;
+    devices_t* doors;
 } server_t;
 
 typedef struct {
