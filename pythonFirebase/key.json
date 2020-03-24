@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "smarthouse-emb",
+  "private_key_id": "85acf274ef919ab309bb65d96c0a6b5807c5b446",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCFGtWVLl62H8hP\nWSsxiG/EmyOdFOEP7V8Bo+vBnVrQKFJ41MS6Hp9DdgCK868KwEmBftmlvX9201Lu\nRjabpqoI9gnymHEYKAiY+z9e1NxX8gogkEQRdMFzLbW/EVUq7iYbxpgkBsJp1Y0V\n03TavNDtQrxOgffJFp9biA+859zDsC54nbnE7EPGTfJB02h1nFvemQUMzEu9fEG9\nD4ts1mrNY2iMYXS8/a2E+Ou9M6eGR2WvSgu8etLX/bx3FzHHwxmIVuK2IqXW1TdH\noYCFjw1QyW9YC/PkfXm9Vr9PlH1qWYbckYJhq+HKDGBnDOru7CYH70cCVdZOEv1+\nz3Bmqwn3AgMBAAECggEAKL9pSU0zw2+BZAE5PuW0yaxwv6Lnr3eMkTT8dH5Wkcj2\nTnVccFn1ibJzQhaNrK3nEtShjqKvhdH13mnyR75C6ZFgxDq0zJ9c2nB4GvDxL58y\nSHvBytJCcp84t3B38TeMxQ4L/2NuWvX8RgVBDcGl+Cxo92PEVnQtftjtcHhO1j0F\nRw0stqm/1iaDWADw/wMgsa7NCmNRqEHUcmbAgYARm7ZaU9IbcCZOm5QglKEq2nsq\ncdA/nSmQyYjCmAkjwnM+93Zkk1Co2uFVUWSRctrXiUmNLeHrb0x8D2mLXWeQG8eY\nLnuwKtyYaZnPmJ/7H1KbMhgUI/iUhgsx2w3JNkDkaQKBgQC5cLPcQ1biJfryGmOl\nFI8ZVA4lKnCz5iYxuhJtS01vqpXVsuZq3rimRIhybn7YyZKsoUvbJkfx0umg3noz\n1Qh0Pc0ctQaui9nkL8fJT1PJPvBOQcG5DptFz+WRJA9MO6+u6N/M5ReyeRf5ODDs\naa1voTnTMM4joJCTyxINIqsgLQKBgQC3wELuhF88MLWw/5WE+/ePKo6QzyzadywM\nXALpbgXVli19FD8qjjsKXddhMcu3z+9KlJzgyBmdfmEI+CzCY/9w9EO4vORu4jio\nj9UV/H1bUQIRy5fBHe0vOG/BDH1GRRYSntsbMCNLmirpEoMwbtebTZ6Yu2HyuVqn\nlYDtq7XFMwKBgBjcRSCYXoN+9/+RDh7JfM22eRb+c5GKn0A3Y9UHLWB1DBVUIJPf\nO/3+XhSJP7Qsgd9m2FaO8UI4Nl38tYFRZArBZkgc9MJduV5gEXapjeAC8hBrvF7k\n2GgpkOs+XFaqAcl/KtG7PMwOc+pTYCuxlzDJ+oiXmGsqUXee19Ku/SYZAoGALUXG\nd+PPXxIVQfXGzgwSk4iFtbIFuBHSnXzyDrdX4qbssDuT0JVYgJZcYYsWSUSHDZYO\nDOfgP8iKed5DkOV4Y0kbgmGv2o4MLaO6eX9LF3ufCelii2cnMBI0npjIKM8OwCm5\njDpRB+iFGAXCouU8Y/w8zh6k5Fu8tTuFl4lN8LcCgYEAkPV6unf+S8YzrvGuNKkV\nHWuqPRVV/W5nW4J5uxo/7gDDeqNWPyNOGOo7edwyby6PfkY3xBuQWpXFtFqRE6N+\nvdHINah1X+Zh3CyS172SE+IP8acYYHL87/ZKVc34PBJ3VWhQlbRu7cV4trV7OUnE\nXP51rjVebpeqmSgxF1gZXy0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-v8m9l@smarthouse-emb.iam.gserviceaccount.com",
+  "client_id": "101066331856337051095",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-v8m9l%40smarthouse-emb.iam.gserviceaccount.com"
+}
