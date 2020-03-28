@@ -1,5 +1,17 @@
 
 //variables CSS de los sensores
+
+
+
+
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 1px;
+  right:  25px;
+}
+
 .boton{
 
     object-fit: contain;
@@ -11,11 +23,10 @@ margin-right: auto;
 .luz1 {
     display: var(--Luz1);
     padding: 10px;
-    width: 90px;
-
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    width: 40px;
+    height: 40px;
+    bottom: 50px;
+    right: 50px;
    
   
   }
@@ -35,8 +46,8 @@ margin-right: auto;
 .luz2{
     display: var(--Luz2);
     padding: 10px;
-    width: 90px;
-    position: fixed;
+    width: 80px;
+  
     bottom: 4rem;
     right: 4rem;
    
@@ -47,7 +58,7 @@ margin-right: auto;
     display: var(--Luz3);
     padding: 10px;
     width: 90px;
-    position: fixed;
+
     bottom: 6rem;
     right: 6em;
     
@@ -57,7 +68,7 @@ margin-right: auto;
     display: var(--Luz4);
     padding: 10px;
     width: 90px;
-    position: fixed;
+  
     bottom: 8rem;
     right: 8rem;
     
@@ -67,7 +78,7 @@ margin-right: auto;
     display: var(--Luz5);
     padding: 10px;
     width: 90px;
-    position: fixed;
+
     bottom: 10rem;
     right: 10rem;
 
@@ -80,7 +91,7 @@ margin-right: auto;
     width: 90px;
 
     
-    position: fixed;
+  
     bottom: 12rem;
     right: 12rem;
    
@@ -92,7 +103,7 @@ margin-right: auto;
     display: var(--Puerta2);
     padding: 10px;
     width: 90px;
-    position: fixed;
+  
     bottom: 14rem;
     right: 14rem;
    
@@ -102,7 +113,7 @@ margin-right: auto;
     display: var(--Puerta3);
     padding: 10px;
     width: 90px;
-    position: fixed;
+   
     bottom: 16rem;
     right: 16rem;
     }
@@ -111,7 +122,7 @@ margin-right: auto;
     display: var(--Puerta4);
     padding: 10px;
     width: 90px;
-    position: fixed;
+  
     bottom: 18rem;
     right: 18rem;
     }
@@ -120,7 +131,7 @@ margin-right: auto;
     display: var(--Puerta5);
     padding: 10px;
     width: 90px;
-    position: fixed;
+  
     bottom: 20rem;
     right: 20rem;
     }

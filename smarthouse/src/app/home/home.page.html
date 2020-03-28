@@ -6,8 +6,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-<ion-button size="large" (click)="onLogout()">Logout</ion-button>
-<ion-button size="large" routerLink="/admin">Admin</ion-button>
-<ion-button size="large" routerLink="/register">Registrar</ion-button>
-</ion-content>
+
+  <ion-content [fullscreen]="true">
+    <div class="container">
+       <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <ion-button   size="large" (click)="onLogout()">Logout</ion-button>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <ion-button   size="large" routerLink="/admin">Admin</ion-button>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <ion-button  size="large" routerLink="/register">Registrar</ion-button>
+        </div>
+      </div>
+    </div>
+  
+    </ion-content>
+    
+
+

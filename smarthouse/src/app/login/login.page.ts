@@ -29,7 +29,6 @@ export class LoginPage implements OnInit {
     this.showToast('Email y/o contraseña invalidos');
   }
 }
-
 showToast(msg) {
   this.toastCtrl.create({
     message: msg,
