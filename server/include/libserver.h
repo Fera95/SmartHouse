@@ -14,6 +14,29 @@
 #define AMOUNT_ERROR    4
 #define POSITION_ERROR  5
 
+#define led_bedroom	2		// GPIO2
+#define led_bathroom 3		// GPIO3
+#define led_hallway	4		// GPIO4
+							// GND
+#define led_kitchen 17		// GPIO17
+#define led_studio 27		// GPIO27
+#define door_bedroom 22		// GPIO22
+							// 3V3 power
+#define door_bathroom 10	// GPIO10
+#define door_hallway 9		// GPIO9
+#define door_kitchen 11		// GPIO11
+							// GND
+#define door_studio 0       // GPIO0
+                    		// GPIO5
+							// GPIO6
+							// GPIO13
+							// GPIO19
+							// GPIO26
+							// GND
+
+enum pinValues {HIGH = 1, LOW = 0};
+enum pinState {INPUT = 1, OUTPUT = 0};
+
 typedef struct {
 	uint8_t bedroom;
 	uint8_t bathroom;
@@ -58,5 +81,10 @@ uint8_t send_text(client_t* client, const char* text);
 uint8_t send_json(client_t* client, const char* text);
 uint8_t send_error(client_t* client);
 
+void pinMode(short pin, int mode);
+void digitalWrite (short pin, int value);
+int digitalRead (short pin);
+
 void init_devices(server_t* server);
+
 #endif

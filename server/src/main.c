@@ -18,7 +18,6 @@
 #include <stdarg.h>
 #include <sys/syscall.h> // For call to gettid
 #include <libserver.h>
-//#include <libraspio.h>
 
 server_t *server;
 client_t *client;
@@ -32,7 +31,7 @@ void close_socket(){
     }
     kill(getpid(), SIGKILL);
 }
-/*
+
 void init_pins () {
 	pinMode(led_bedroom, OUTPUT);
 	pinMode(led_bathroom, OUTPUT);
@@ -46,7 +45,7 @@ void init_pins () {
 	pinMode(door_kitchen, INPUT);
 	pinMode(door_studio, INPUT);
 } 
-*/
+
 
 int main(int argc, char *argv[]) {
     int port = 8080;

@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "libserver.h": "c"
+        "libserver.h": "c",
+        "string.h": "c",
+        "libraspio.h": "c",
+        "stdio.h": "c"
     }
 }

@@ -1,19 +1,21 @@
+#CC = gcc -c
+AR = ar rv
+RL = ranlib
+NM = nm -s
+LD = ld -o
+
 SERVER = libserver
 SERVER_LIB = $(SERVER).a
 SERVER_SRC = $(SERVER).c
 SERVER_OBJ = $(SERVER).o
 
-INC_DIR = ../include/
-LIB_DIR=../lib/
-CC = gcc -c -I$(INC_DIR)
-AR = ar rvs
+all: $(SERVER_SRC) $(LIBSRC)
+		make lib_server
 
-all: $(SERVER_LIB)
-
-$(SERVER_LIB) : $(SERVER_OBJ)
+lib_server:
+		$(CC) -c $(SERVER_SRC)
 		$(AR) $(SERVER_LIB) $(SERVER_OBJ)
-$(SERVER_OBJ) : $(SERVER_SRC)
-		$(CC) $(SERVER_SRC)
+		$(RL) $(SERVER_LIB)
 
 clean:
 		rm *.o

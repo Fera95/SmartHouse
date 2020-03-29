@@ -1,15 +1,16 @@
-CC = gcc -o
-EXE = main
-SERVER_LIB = libserver.a
+CC = gcc
+SRC = main.c
+OUT = ../bin/SHserver
 
-LIB_DIR = ../lib/
-INCLUDE_DIR = ../include/
-BIN_DIR = ../bin/
+LIBSERVER = ../lib/libserver.a
 
-LIBS = $(LIB_DIR)$(SERVER_LIB) 
+CFLAGS = -I../include
+LDFLAGS = -L../lib 
 
-done: $(EXE)
+main: $(SRC)
+		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBSERVER)
 
-$(EXE) : $(EXE).c
-		$(CC) $(BIN_DIR)$(EXE) -g $(EXE).c $(LIBS) -I$(INCLUDE_DIR) -lm
-
+clean:
+		rm ../bin/smartHouseServer
+		rm main.o
+		clear
