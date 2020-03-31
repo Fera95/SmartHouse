@@ -1,14 +1,15 @@
-CC = gcc
+#CC = gcc
 SRC = main.c
 OUT = ../bin/SHserver
 
+LIBRASPIO = ../lib/libraspio.a
 LIBSERVER = ../lib/libserver.a
 
 CFLAGS = -I../include
 LDFLAGS = -L../lib 
 
 main: $(SRC)
-		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBSERVER)
+		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBRASPIO) $(LIBSERVER)
 
 clean:
 		rm ../bin/smartHouseServer

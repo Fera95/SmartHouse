@@ -18,6 +18,7 @@
 #include <stdarg.h>
 #include <sys/syscall.h> // For call to gettid
 #include <libserver.h>
+#include <libraspio.h>
 
 server_t *server;
 client_t *client;

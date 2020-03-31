@@ -34,9 +34,6 @@
 							// GPIO26
 							// GND
 
-enum pinValues {HIGH = 1, LOW = 0};
-enum pinState {INPUT = 1, OUTPUT = 0};
-
 typedef struct {
 	uint8_t bedroom;
 	uint8_t bathroom;
@@ -84,12 +81,5 @@ uint8_t send_error(client_t* client);
 
 void init_devices(server_t *server);
 
-void write_int(int data, char *write_path);
-void write_char(char *data, char *write_path);
-
-void digitalWrite (short pin, int value);
-int digitalRead (short pin);
-
-void pinMode(short pin, int mode);
 
 #endif
