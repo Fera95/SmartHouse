@@ -340,7 +340,7 @@ void write_int(int data, char *write_path) {
 	fclose(fp);
 }
 
-
+ // =================================== GPIO LIB ===================================
 
 /** Writes a char* to a file, overwritting the existing file
  * \param data the data to be written. A char *

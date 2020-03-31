@@ -16,6 +16,7 @@ lib_server:
 		$(CC) -c $(SERVER_SRC)
 		$(AR) $(SERVER_LIB) $(SERVER_OBJ)
 		$(RL) $(SERVER_LIB)
+		$(NM) $(SERVER_LIB)
 
 clean:
 		rm *.o

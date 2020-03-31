@@ -75,16 +75,21 @@ uint8_t process_client(client_t *client, server_t* server);
 void trim_query(client_t *client);
 void delimit_query(client_t *client);
 uint8_t set_params(const char *query, server_t *server, int function);
+const char* jsonPicker (int code);
 uint8_t process_query(client_t* client, server_t* server);
 
 uint8_t send_text(client_t* client, const char* text);
 uint8_t send_json(client_t* client, const char* text);
 uint8_t send_error(client_t* client);
 
-void pinMode(short pin, int mode);
+void init_devices(server_t *server);
+
+void write_int(int data, char *write_path);
+void write_char(char *data, char *write_path);
+
 void digitalWrite (short pin, int value);
 int digitalRead (short pin);
 
-void init_devices(server_t* server);
+void pinMode(short pin, int mode);
 
 #endif
