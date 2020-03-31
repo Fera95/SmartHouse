@@ -1,7 +1,11 @@
-import socket
 import sys
 import time
 import json
+import importlib.util
+spec = importlib.util.spec_from_file_location('rp2socket', './socket.py')
+foo = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(foo)
+foo.MyClass()
 
 HOST = "localhost"
 PORT = 8080
