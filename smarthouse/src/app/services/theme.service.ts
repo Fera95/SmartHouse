@@ -15,11 +15,14 @@ export class ThemeService {
   }
 
   cambiarTema(estado:string){
-     if(estado=="1"){
+     if(estado=="0"){
       this.enableDark();
-     }
-     else{
+     } 
+     if(estado=="1"){
       this.enableLight();
+     }
+     if(estado=="2"){
+      this.enableExit();
      }
   }
 
@@ -34,6 +37,12 @@ export class ThemeService {
     this.tema = 'light-theme' ;
     this.renderer.addClass(this.document.body,this.tema);
 
+  }
+
+  enableExit(){  
+    this.renderer.removeClass(this.document.body,this.tema);
+    this.tema = 'exit-theme' ;
+    this.renderer.addClass(this.document.body,this.tema);
   }
 
 }

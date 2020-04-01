@@ -36,11 +36,12 @@ export class AdminPage implements OnInit {
  //se agrega servicio al constructor
   constructor(public servicio:AuthService,private casaService: CasaService,
     private theme: ThemeService , private sanitizer : DomSanitizer) { 
+      this.theme.cambiarTema("0");
     }
 
   ngOnInit() {
      this.casas = this.casaService.getCasas();
-     this.cambiarTema("1");
+     this.theme.cambiarTema("0");
   }
 
 
@@ -73,7 +74,7 @@ export class AdminPage implements OnInit {
   }
 
   temaSalida(){
-   this.cambiarTema("0");
+   this.cambiarTema("1");
   }
 
   cambiarTema(estado: string){

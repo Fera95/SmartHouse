@@ -16,6 +16,7 @@
 :root {
 
 
+//tema 0
   .dark-theme{
     
 
@@ -33,19 +34,48 @@
       
     }
 
-    
-
-    
-    
 
 }
 
 
+//tema 1
 .light-theme{
     
 
   ion-content{
     --background:none;
+    background-image: url('/assets/img/background/smarthouse.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    text-align: center;
+    -webkit-background-size: 100% 100%;
+    
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
+  }
+
+ 
+
+}
+
+
+//tema 2
+.exit-theme{
+    
+
+  ion-content{
+    --background:none;
+    background-image: url('/assets/img/background/login.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    text-align: center;
+    -webkit-background-size: 100% 100%;
+    
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
+ 
   }
 
  
