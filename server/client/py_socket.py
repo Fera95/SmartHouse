@@ -1,17 +1,14 @@
 import sys
 import time
 import json
-import importlib.util
-spec = importlib.util.spec_from_file_location('rp2socket', './socket.py')
-foo = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(foo)
-foo.MyClass()
+import socks
 
 HOST = "localhost"
 PORT = 8080
+s = socks.socksocket()
 
 while (True):
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.set_proxy(socks.HTTP, HOST, PORT)
     s.connect((HOST, PORT))
 
     msg = input()
