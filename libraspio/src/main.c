@@ -19,7 +19,7 @@
 #define door_bedroom 9		// GPIO9
 #define door_kitchen 11		// GPIO11
 							// GND
-#define door_hallway 		// GPIO0
+#define door_hallway 0 		// GPIO0
 							// GPIO5
 							// GPIO6
 							// GPIO13
