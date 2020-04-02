@@ -10,9 +10,9 @@ run:
 	$(OUT)
 
 raspio:
-		$(info remember setting /opt/poky/2.5.1/environment-setup-cortexa7hf-neon-vfpv4-poky-linux-gnueabi -c)
-		make -C $(LIBDIR) raspio
-		make -C $(LIBSRC) raspio
+		$(info "remember setting: . /opt/poky/2.5.1/environment-setup-cortexa7hf-neon-vfpv4-poky-linux-gnueabi -c")
+		make -C $(LIBDIR)
+		make -C $(LIBSRC)
 
 reset:
 	$(info cleaning the folder...)

@@ -17,15 +17,10 @@ libraries:
 		make clean
 
 static:
-		$(CC) $(LIBSRC)
+		$(CC) -c $(LIBSRC)
 		$(AR) $(LIBA) $(LIBO)
 		$(RL) $(LIBA)
-		#$(NM) $(LIBA)
-
-raspio:
-		$(CC) -c libraspio.c
-		$(AR) $(LIBA) $(LIBO)
-		$(RL) $(LIBA)
+		$(NM) $(LIBA)
 
 clean:
 		rm $(LIBO)
