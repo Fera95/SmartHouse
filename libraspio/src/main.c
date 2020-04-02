@@ -7,20 +7,20 @@
 #include <libraspio.h>
 
 							// 3V3 power
-#define led_bedroom	2		// GPIO2
-#define led_bathroom 3		// GPIO3
-#define led_hallway	4		// GPIO4
+#define led_kitchen	2		// GPIO2
+#define led_hallway 3		// GPIO3
+#define led_bedroom	4		// GPIO4
 							// GND
-#define led_kitchen 17		// GPIO17
+#define led_bathroom 17		// GPIO17
 #define led_studio 27		// GPIO27
-#define door_bedroom 22		// GPIO22
+#define door_studio 22		// GPIO22
 							// 3V3 power
 #define door_bathroom 10	// GPIO10
-#define door_hallway 9		// GPIO9
+#define door_bedroom 9		// GPIO9
 #define door_kitchen 11		// GPIO11
 							// GND
-							// GPIO0
-#define door_studio 5		// GPIO5
+#define door_hallway 0		// GPIO0
+							// GPIO5
 							// GPIO6
 							// GPIO13
 							// GPIO19
