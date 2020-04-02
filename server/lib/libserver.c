@@ -85,7 +85,7 @@ uint8_t init_server(server_t *server, int port) {
 }
 
 uint8_t close_server(server_t *server) {
-    printf("Closing server\n");
+    printf("+++ Closing server +++\n");
     close(server->socket_descriptor);
     return 0;
 }
@@ -119,8 +119,8 @@ uint8_t close_client(client_t *client) {
 }
 
 uint8_t process_client(client_t *client, server_t *server) {
-	trim_query(client);				// First line
-	delimit_query(client);			// Removes GET till space
+	//trim_query(client);				// First line
+	//delimit_query(client);			// Removes GET till space
 	process_query(client, server);	// Process that query
 }
 
@@ -232,12 +232,14 @@ const char * jsonPicker (int code) {
 
 uint8_t process_query(client_t *client, server_t *server) {
     char *query = client->buffer;
-    printf("Client sent: %s\n", query);
+    system("clear");
+    printf("+++ Client sent: +++\n%s", query);
     const char s[2] = ":";
 	char str[80];
 	strcpy(str, query);
 
     // Parse expected query
+    /*
 	char *token;
     token = strtok(str, s);
 	server->leds->bedroom = atoi(token);
@@ -249,6 +251,7 @@ uint8_t process_query(client_t *client, server_t *server) {
 	server->leds->kitchen = atoi(token);
 	token = strtok(NULL, s);
 	server->leds->studio = atoi(token);
+    */
 /*
     digitalWrite(led_bedroom, server->leds->bedroom);
     digitalWrite(led_bathroom, server->leds->bathroom);
@@ -293,7 +296,7 @@ uint8_t send_text(client_t *client, const char *text) {
     write(client->socket_descriptor, text, strlen(text));
 }
 uint8_t send_json(client_t *client, const char *text) {
-    //write(client->socket_descriptor, html_web_json, sizeof(html_web_json) - 1);
+    write(client->socket_descriptor, html_web_json, sizeof(html_web_json) - 1);
     write(client->socket_descriptor, text, strlen(text));
 }
 uint8_t send_error(client_t *client) {
@@ -306,10 +309,4 @@ void init_devices(server_t *server) {
     server->leds->hallway = 1;
     server->leds->kitchen = 0;
     server->leds->studio = 0;
-
-    server->doors->bedroom = 0;  // digitalRead(door_bedroom);
-    server->doors->bathroom = 1; // digitalRead(door_bathroom);
-    server->doors->hallway = 0;  //digitalRead(door_hallway);
-    server->doors->kitchen = 0;  //digitalRead(door_kitchen);
-    server->doors->studio = 0;   //digitalRead(door_studio);
 }
