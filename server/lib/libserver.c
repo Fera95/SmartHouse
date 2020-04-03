@@ -85,7 +85,7 @@ uint8_t init_server(server_t *server, int port) {
 }
 
 uint8_t close_server(server_t *server) {
-    printf("Closing server\n");
+    printf("+++ Closing server +++\n");
     close(server->socket_descriptor);
     return 0;
 }
@@ -232,7 +232,6 @@ const char * jsonPicker (int code) {
 
 uint8_t process_query(client_t *client, server_t *server) {
     char *query = client->buffer;
-    printf("Client sent: %s\n", query);
     const char s[2] = ":";
 	char str[80];
 	strcpy(str, query);
@@ -256,25 +255,20 @@ uint8_t process_query(client_t *client, server_t *server) {
     digitalWrite(led_kitchen, server->leds->kitchen);
     digitalWrite(led_studio, server->leds->studio);
 
+    system("clear");
+    printf("+++ Client sent: +++ \n");
+	printf(" led bedroom: %d\n", server->leds->bedroom);
+	printf("led bathroom: %d\n", server->leds->bathroom);
+	printf(" led hallway: %d\n", server->leds->hallway);
+	printf(" led kitchen: %d\n", server->leds->kitchen);
+	printf("  led studio: %d\n", server->leds->studio);
+
     server->doors->bedroom = digitalRead(door_bedroom);
     server->doors->bathroom = digitalRead(door_bathroom);
     server->doors->hallway = digitalRead(door_hallway);
     server->doors->kitchen = digitalRead(door_kitchen);
     server->doors->studio = digitalRead(door_studio);
 
-    system("clear");
-	printf("led bedroom: %d\n", server->leds->bedroom);
-	printf("led bathroom: %d\n", server->leds->bathroom);
-	printf("led hallway: %d\n", server->leds->hallway);
-	printf("led kitchen: %d\n", server->leds->kitchen);
-	printf("led studio: %d\n", server->leds->studio);
-/*
-    server->doors->bedroom = 0;// digitalRead(door_bedroom);
-    server->doors->bathroom = 1;// digitalRead(door_bathroom);
-    server->doors->hallway = 0;//digitalRead(door_hallway);
-    server->doors->kitchen = 1;//digitalRead(door_kitchen);
-    server->doors->studio = 1;//digitalRead(door_studio);
-*/
     if(strcmp(query, "/dummy") == 0) {
         send_text(client, "Im dummy");
     } else if(strncmp(query, "/restart", 8) == 0) {
@@ -307,10 +301,4 @@ void init_devices(server_t *server) {
     server->leds->hallway = 1;
     server->leds->kitchen = 0;
     server->leds->studio = 0;
-
-    server->doors->bedroom = 0;  // digitalRead(door_bedroom);
-    server->doors->bathroom = 1; // digitalRead(door_bathroom);
-    server->doors->hallway = 0;  //digitalRead(door_hallway);
-    server->doors->kitchen = 0;  //digitalRead(door_kitchen);
-    server->doors->studio = 0;   //digitalRead(door_studio);
 }

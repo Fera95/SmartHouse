@@ -25,7 +25,7 @@ client_t *client;
 int in_use;
 
 void close_socket(){
-    printf("Killing\n");
+    printf("+++ Killing +++\n");
     close_server(server);
     if(in_use){
         close_client(client);
@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
     server = (server_t*) malloc(sizeof(server_t));
     client = (client_t*) malloc(sizeof(client_t));
     if(init_server(server, port)) exit(1);
-    printf("Now listening on port %d\n", port);
+    printf("+++ Now listening on port %d +++\n", port);
     signal(SIGINT, close_socket);
         
     devices_t *my_leds;
@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
     while (1) {
         if(accept_client(server, client) == 0) {
             in_use=1;
-            printf("New client received coming from IP %s\n", client->ip);
+            printf("+++ New client received coming from IP %s +++\n", client->ip);
             process_client(client, server);
             in_use=0;
             close_client(client);
