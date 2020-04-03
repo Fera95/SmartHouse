@@ -10,7 +10,7 @@ run:
 	$(OUT)
 
 raspio:
-		$(info "remember setting: . /opt/poky/2.5.1/environment-setup-cortexa7hf-neon-vfpv4-poky-linux-gnueabi -c")
+		$(info remember setting: . /opt/poky/2.5.1/environment-setup-cortexa7hf-neon-vfpv4-poky-linux-gnueabi -c)
 		make -C $(LIBDIR)
 		make -C $(LIBSRC)
 
