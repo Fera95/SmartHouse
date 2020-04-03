@@ -233,13 +233,12 @@ const char * jsonPicker (int code) {
 uint8_t process_query(client_t *client, server_t *server) {
     char *query = client->buffer;
     system("clear");
-    printf("+++ Client sent: +++\n%s", query);
+    //printf("+++ Client sent: +++\n%s\n\n", query);
     const char s[2] = ":";
 	char str[80];
 	strcpy(str, query);
 
     // Parse expected query
-    /*
 	char *token;
     token = strtok(str, s);
 	server->leds->bedroom = atoi(token);
@@ -251,31 +250,27 @@ uint8_t process_query(client_t *client, server_t *server) {
 	server->leds->kitchen = atoi(token);
 	token = strtok(NULL, s);
 	server->leds->studio = atoi(token);
-    */
-/*
+
+    /*
     digitalWrite(led_bedroom, server->leds->bedroom);
     digitalWrite(led_bathroom, server->leds->bathroom);
     digitalWrite(led_hallway, server->leds->>leds->hallway);
     digitalWrite(led_kitchen, server->leds->kitchen);
     digitalWrite(led_studio, server->leds->studio);
+    */
 
-    server->doors->bedroom = digitalRead(door_bedroom);
-    server->doors->bathroom = digitalRead(door_bathroom);
-    server->doors->hallway = digitalRead(door_hallway);
-    server->doors->kitchen = digitalRead(door_kitchen);
-    server->doors->studio = digitalRead(door_studio);
-*/
+    printf("+++ Client sent: +++\n");
 	printf("led bedroom: %d\n", server->leds->bedroom);
 	printf("led bathroom: %d\n", server->leds->bathroom);
 	printf("led hallway: %d\n", server->leds->hallway);
 	printf("led kitchen: %d\n", server->leds->kitchen);
 	printf("led studio: %d\n", server->leds->studio);
 
-    server->doors->bedroom = 0;// digitalRead(door_bedroom);
+    server->doors->bedroom  = 0;// digitalRead(door_bedroom);
     server->doors->bathroom = 1;// digitalRead(door_bathroom);
-    server->doors->hallway = 0;//digitalRead(door_hallway);
-    server->doors->kitchen = 1;//digitalRead(door_kitchen);
-    server->doors->studio = 1;//digitalRead(door_studio);
+    server->doors->hallway  = 0;//digitalRead(door_hallway);
+    server->doors->kitchen  = 1;//digitalRead(door_kitchen);
+    server->doors->studio   = 1;//digitalRead(door_studio);
     
     if(strcmp(query, "/dummy") == 0) {
         send_text(client, "Im dummy");
@@ -296,7 +291,7 @@ uint8_t send_text(client_t *client, const char *text) {
     write(client->socket_descriptor, text, strlen(text));
 }
 uint8_t send_json(client_t *client, const char *text) {
-    write(client->socket_descriptor, html_web_json, sizeof(html_web_json) - 1);
+    //write(client->socket_descriptor, html_web_json, sizeof(html_web_json) - 1);
     write(client->socket_descriptor, text, strlen(text));
 }
 uint8_t send_error(client_t *client) {
