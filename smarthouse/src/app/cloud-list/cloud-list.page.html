@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cloud Files</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let f of cloudFiles">
+      <ion-button slot="start" (click)="openExternal(f.url)">
+        <ion-icon name="open" slot="icon-only"></ion-icon>
+      </ion-button>
+      
+      <ion-label class="ion-text-wrap">
+        {{ f.name }}
+        <p>{{ f.full }}</p>
+      </ion-label>
+ 
+      <ion-button slot="end" (click)="deleteFile(f.ref)" color="danger">
+        <ion-icon name="trash" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

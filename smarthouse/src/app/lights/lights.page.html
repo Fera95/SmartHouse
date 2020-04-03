@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lights</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content > 
+
+ 
+  <ion-list>
+    <div style="display: none;" *ngFor="let casa of (casas | async)" >
+    {{casa.id}},
+    {{casa.Luz1}}, 
+    {{casa.Luz2}},
+    {{casa.Luz3}}, 
+    {{casa.Luz4}}, 
+    {{casa.Luz5}}, 
+    {{casa.Puerta1}},
+    {{casa.Puerta2}},  
+    {{casa.Puerta3}}, 
+    {{casa.Puerta4}}, 
+    {{casa.Puerta5}}
+  
+    <div *ngIf="casa; then callfunction; else nofunction"></div>
+    <ng-template #callfunction>
+      {{setData(casa.id,casa.Luz1,casa.Luz2,casa.Luz3,casa.Luz4,casa.Luz5,casa.Puerta1,casa.Puerta2,casa.Puerta3,casa.Puerta4,casa.Puerta5)}}
+      
+    </ng-template>
+    <ng-template #nofunction>
+     <!-- something else -->
+    </ng-template>
+  </div>
+  </ion-list>
+
+  <div class="container">
+  
+    <div class="container position-fixed luz1 vw-2 vh-2" >
+        <button (click)= "setLuz1()">Luz1</button>
+    </div>
+
+
+
+
+</div>
+
+</ion-content>
+

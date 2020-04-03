@@ -54,28 +54,25 @@ export class CasaService {
     );
   }
 
-
- 
- 
- 
  
   updateCasa(casa: Casa): Promise<void> {
-    return this.casaCollection.doc(casa.id).update({ 
-      Luz1: casa.Luz1, 
-      Luz2: casa.Luz2, 
-      Luz3: casa.Luz2, 
-      Luz4: casa.Luz1, 
-      Luz5: casa.Luz1, 
-      Puerta1: casa.Puerta1, 
-      Puerta2: casa.Puerta2, 
-      Puerta3: casa.Puerta3, 
-      Puerta4: casa.Puerta4, 
+    return this.casaCollection.doc(casa.id).update({
+      
+      Luz1: casa.Luz1,
+      Luz2:  casa.Luz2,
+      Luz3:  casa.Luz3,
+      Luz4:  casa.Luz4,
+      Luz5:  casa.Luz5,
+      Puerta1:  casa.Puerta1,
+      Puerta2: casa.Puerta2,
+      Puerta3: casa.Puerta3,
+      Puerta4: casa.Puerta4,
       Puerta5: casa.Puerta5
-    
-    });
+
+
+
+     });
   }
  
-  deleteIdea(id: string): Promise<void> {
-    return this.casaCollection.doc(id).delete();
-  }
+ 
 }

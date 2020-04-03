@@ -26,7 +26,21 @@ const routes: Routes = [
   {
     path: 'casa-details/:id',
     loadChildren: () => import('./pages/casa-details/casa-details.module').then( m => m.CasaDetailsPageModule)
+  },  {
+    path: 'files',
+    loadChildren: () => import('./files/files.module').then( m => m.FilesPageModule)
   },
+  {
+    path: 'cloud-list',
+    loadChildren: () => import('./cloud-list/cloud-list.module').then( m => m.CloudListPageModule)
+  },
+  {
+    path: 'lights',
+    loadChildren: () => import('./lights/lights.module').then( m => m.LightsPageModule)
+  }
+
+
+
 ];
 
 @NgModule({
