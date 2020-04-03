@@ -1,27 +1,31 @@
-import socket
 import sys
 import time
-import json
+import socks
+import simplejson as json
+
 
 HOST = "localhost"
-PORT = 8080
+PORT = 1080
 
 while (True):
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #family=socket.AF_INET, type=socket.SOCK_STREAM, proto=0)
+    s = socks.socksocket()
     s.connect((HOST, PORT))
 
-    msg = input()
+    msg = input(">")
     msg = msg.encode()
     s.send(msg)
     data = s.recv(len(msg)+40000)
     s.close()
     server_response = data.decode()
     
-    parsed_json = json.loads(server_response)
-
-    print("Led 1: " + str(parsed_json['led_1']))
-    print("Led 2: " + str(parsed_json['led_2']))
-    print("Led 3: " + str(parsed_json['led_3']))
-    print("Led 4: " + str(parsed_json['led_4']))
-    print("Led 5: " + str(parsed_json['led_5']))
+    if (server_response != ""):
+        parsed_json = json.loads(server_response)
+        print("Door 1: " + str(parsed_json['led_1']))
+        print("Door 2: " + str(parsed_json['led_2']))
+        print("Door 3: " + str(parsed_json['led_3']))
+        print("Door 4: " + str(parsed_json['led_4']))
+        print("Door 5: " + str(parsed_json['led_5']))
+    else:
+        print(server_response)
 

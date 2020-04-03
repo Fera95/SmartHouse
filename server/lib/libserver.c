@@ -85,7 +85,7 @@ uint8_t init_server(server_t *server, int port) {
 }
 
 uint8_t close_server(server_t *server) {
-    printf("Closing server\n");
+    printf("+++ Closing server +++\n");
     close(server->socket_descriptor);
     return 0;
 }
@@ -119,8 +119,8 @@ uint8_t close_client(client_t *client) {
 }
 
 uint8_t process_client(client_t *client, server_t *server) {
-	trim_query(client);				// First line
-	delimit_query(client);			// Removes GET till space
+	//trim_query(client);				// First line
+	//delimit_query(client);			// Removes GET till space
 	process_query(client, server);	// Process that query
 }
 
@@ -232,7 +232,8 @@ const char * jsonPicker (int code) {
 
 uint8_t process_query(client_t *client, server_t *server) {
     char *query = client->buffer;
-    printf("Client sent: %s\n", query);
+    system("clear");
+    //printf("+++ Client sent: +++\n%s\n\n", query);
     const char s[2] = ":";
 	char str[80];
 	strcpy(str, query);
@@ -249,30 +250,27 @@ uint8_t process_query(client_t *client, server_t *server) {
 	server->leds->kitchen = atoi(token);
 	token = strtok(NULL, s);
 	server->leds->studio = atoi(token);
-/*
+
+    /*
     digitalWrite(led_bedroom, server->leds->bedroom);
     digitalWrite(led_bathroom, server->leds->bathroom);
     digitalWrite(led_hallway, server->leds->>leds->hallway);
     digitalWrite(led_kitchen, server->leds->kitchen);
     digitalWrite(led_studio, server->leds->studio);
+    */
 
-    server->doors->bedroom = digitalRead(door_bedroom);
-    server->doors->bathroom = digitalRead(door_bathroom);
-    server->doors->hallway = digitalRead(door_hallway);
-    server->doors->kitchen = digitalRead(door_kitchen);
-    server->doors->studio = digitalRead(door_studio);
-*/
+    printf("+++ Client sent: +++\n");
 	printf("led bedroom: %d\n", server->leds->bedroom);
 	printf("led bathroom: %d\n", server->leds->bathroom);
 	printf("led hallway: %d\n", server->leds->hallway);
 	printf("led kitchen: %d\n", server->leds->kitchen);
 	printf("led studio: %d\n", server->leds->studio);
 
-    server->doors->bedroom = 0;// digitalRead(door_bedroom);
+    server->doors->bedroom  = 0;// digitalRead(door_bedroom);
     server->doors->bathroom = 1;// digitalRead(door_bathroom);
-    server->doors->hallway = 0;//digitalRead(door_hallway);
-    server->doors->kitchen = 1;//digitalRead(door_kitchen);
-    server->doors->studio = 1;//digitalRead(door_studio);
+    server->doors->hallway  = 0;//digitalRead(door_hallway);
+    server->doors->kitchen  = 1;//digitalRead(door_kitchen);
+    server->doors->studio   = 1;//digitalRead(door_studio);
     
     if(strcmp(query, "/dummy") == 0) {
         send_text(client, "Im dummy");
@@ -306,10 +304,4 @@ void init_devices(server_t *server) {
     server->leds->hallway = 1;
     server->leds->kitchen = 0;
     server->leds->studio = 0;
-
-    server->doors->bedroom = 0;  // digitalRead(door_bedroom);
-    server->doors->bathroom = 1; // digitalRead(door_bathroom);
-    server->doors->hallway = 0;  //digitalRead(door_hallway);
-    server->doors->kitchen = 0;  //digitalRead(door_kitchen);
-    server->doors->studio = 0;   //digitalRead(door_studio);
 }
