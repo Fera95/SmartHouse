@@ -9,7 +9,7 @@ CFLAGS = -I../include
 LDFLAGS = -L../lib 
 
 main: $(SRC)
-		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBRASPIO) $(LIBSERVER)
+		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBRASPIO) $(LIBSERVER) -pthread
 
 clean:
 		rm ../bin/smartHouseServer

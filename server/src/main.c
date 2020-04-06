@@ -17,6 +17,7 @@
 #include <time.h>
 #include <stdarg.h>
 #include <sys/syscall.h> // For call to gettid
+#include <pthread.h>
 #include <libserver.h>
 #include <libraspio.h>
 
@@ -45,11 +46,16 @@ void init_pins () {
 	pinMode(door_hallway, INPUT);
 	pinMode(door_kitchen, INPUT);
 	pinMode(door_studio, INPUT);
-} 
+}
 
+int start_client() {
+    //system("python3 ../client/py_socket.py"); // For non raspberry pi use
+    system("python3 ./py_socket.py");
+    return 0;
+}
 
 int main(int argc, char *argv[]) {
-    int port = 8080;
+    int port = 1080;
     if(argc > 1) port = atoi(argv[1]);
 
     //init_pins();
@@ -67,6 +73,12 @@ int main(int argc, char *argv[]) {
     server->doors = my_doors;
 
     init_devices(server);
+
+    //Start socket interphase
+    pthread_t socket_client;
+    if (pthread_create(&socket_client, NULL, (void*) &start_client, NULL) != 0) {
+        printf("+++ Error creating socket client +++\n");
+    }
     
     while (1) {
         if(accept_client(server, client) == 0) {
@@ -77,5 +89,7 @@ int main(int argc, char *argv[]) {
             close_client(client);
         }
     }
+
+    pthread_join(socket_client, NULL);
     close_server(server);
 }

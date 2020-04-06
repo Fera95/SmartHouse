@@ -22,13 +22,13 @@ lib_raspio:
 		$(CC) -c $(LIBSRC)
 		$(AR) $(LIBA) $(LIBO)
 		$(RL) $(LIBA)
-		$(NM) $(LIBA)
+		#$(NM) $(LIBA)
 
 lib_server:
 		$(CC) -c $(SERVER_SRC)
 		$(AR) $(SERVER_LIB) $(SERVER_OBJ)
 		$(RL) $(SERVER_LIB)
-		$(NM) $(SERVER_LIB)
+		#$(NM) $(SERVER_LIB)
 
 
 
