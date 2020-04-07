@@ -1,5 +1,7 @@
 import firebase_admin
+import time
 from firebase_admin import credentials, firestore
+from time import sleep
 
 cred = credentials.Certificate('key.json')
 firebase_admin.initialize_app(cred)
@@ -9,6 +11,7 @@ db = firestore.client()
 # Constantes
 COLNAME = 'casas'
 DOCNAME = '1hYGoarmfHZIuVuKrhPr'
+TIME = 10000000
 
 # Muestra toda la base de datos actual
 def showAll():
@@ -30,10 +33,30 @@ def updateValue(obj, value):
     val_upd.update({obj: value})
     showAll()
 
+# Función que está buscando cambios hechos en la base de datos
+def listenDocs(time):
+    # Callback
+    def on_snapshot(doc_snapshot, changes, read_time):
+        for doc in doc_snapshot:
+            print(u'\n Received document snapshot: {}\n'.format(doc.id))
+            showAll()
+            print('\n')
+
+    doc_ref = db.collection(COLNAME).document(DOCNAME)
+    doc_watch = doc_ref.on_snapshot(on_snapshot)
+
+    # Tiempo antes de cerrar la conexión
+    sleep(time)
+
+    # Cerrar la conexión
+    doc_watch.unsubscribe()
+
 def main():
     showAll()
-    updateValue('Luz1','1')
+    listenDocs(TIME)
 
 main()
+
+
 
 
