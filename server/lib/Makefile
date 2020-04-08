@@ -14,9 +14,16 @@ SERVER_SRC = $(SERVER).c
 SERVER_LIB = $(SERVER).a
 SERVER_OBJ = $(SERVER).o
 
+LOGGER = jvlogger
+LOGGER_SRC = $(LOGGER).c
+LOGGER_OBJ = $(LOGGER).o
+LOGGER_LIB = lib$(LOGGER).a
+
 all: $(SERVER_SRC) $(LIBSRC)
 		make lib_raspio
 		make lib_server
+		make lib_jvlogger
+		make clean
 
 lib_raspio:
 		$(CC) -c $(LIBSRC)
@@ -30,7 +37,11 @@ lib_server:
 		$(RL) $(SERVER_LIB)
 		#$(NM) $(SERVER_LIB)
 
-
+lib_jvlogger:
+		$(CC) -c $(LOGGER_SRC)
+		$(AR) $(LOGGER_LIB) $(LOGGER_OBJ)
+		$(RL) $(LOGGER_LIB)
+		#$(NM) $(LOGGER_LIB)
 
 clean:
 		rm *.o

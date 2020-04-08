@@ -3,6 +3,8 @@
         "libserver.h": "c",
         "string.h": "c",
         "libraspio.h": "c",
-        "stdio.h": "c"
-    }
+        "stdio.h": "c",
+        "jvlogger.h": "c"
+    },
+    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
 }

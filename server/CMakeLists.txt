@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.6)
 
 #define the project
-project (server)
+project (SHserver)
 
 #cross-compiling
 set(CMAKE_SYSTEM_NAME Linux)
@@ -17,6 +17,7 @@ SET(CMAKE_FIND_ROOT_PATH  ${PATH})
 
 # search for programs in the build host directories
 SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+
 # for libraries and headers in the target directories
 SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
@@ -32,7 +33,7 @@ include_directories(${PROJECT_SOURCE_DIR}/lib)
 add_executable (SHserver src/main.c)
 
 #link against required libraries
-target_link_libraries(SHserver server raspio)
+target_link_libraries(SHserver server raspio jvlogger pthread)
 
 #install the binary
 install (TARGETS SHserver DESTINATION bin)

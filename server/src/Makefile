@@ -1,17 +1,17 @@
 #CC = gcc
 SRC = main.c
-OUT = ../bin/SHserver
+OUT = ../bin/SHserver2
 
 LIBRASPIO = ../lib/libraspio.a
 LIBSERVER = ../lib/libserver.a
+LIBLOGGER = ../lib/libjvlogger.a
 
 CFLAGS = -I../include
 LDFLAGS = -L../lib 
 
 main: $(SRC)
-		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBRASPIO) $(LIBSERVER) -pthread
+		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBRASPIO) $(LIBSERVER) $(LIBLOGGER) -pthread
 
 clean:
-		rm ../bin/smartHouseServer
 		rm main.o
 		clear

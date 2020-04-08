@@ -15,6 +15,7 @@
 #include <dirent.h>
 #include "../include/libserver.h"
 #include "../include/libraspio.h"
+#include "../include/jvlogger.h"
 
 char html_web_error[] =
     "HTTP/1.1 200 Ok\r\n"
@@ -85,7 +86,7 @@ uint8_t init_server(server_t *server, int port) {
 }
 
 uint8_t close_server(server_t *server) {
-    printf("+++ Closing server +++\n");
+    logg(1, "+++ Closing server +++\n");
     close(server->socket_descriptor);
     return 0;
 }
@@ -254,7 +255,7 @@ uint8_t process_query(client_t *client, server_t *server) {
     digitalWrite(led_hallway, server->leds->hallway);
     digitalWrite(led_kitchen, server->leds->kitchen);
     digitalWrite(led_studio, server->leds->studio);
-
+/*
     system("clear");
     printf("+++ Client sent: +++ \n");
 	printf(" led bedroom: %d\n", server->leds->bedroom);
@@ -262,6 +263,8 @@ uint8_t process_query(client_t *client, server_t *server) {
 	printf(" led hallway: %d\n", server->leds->hallway);
 	printf(" led kitchen: %d\n", server->leds->kitchen);
 	printf("  led studio: %d\n", server->leds->studio);
+*/
+    logg(1, "+++ Message received +++");
 
     server->doors->bedroom = digitalRead(door_bedroom);
     server->doors->bathroom = digitalRead(door_bathroom);
