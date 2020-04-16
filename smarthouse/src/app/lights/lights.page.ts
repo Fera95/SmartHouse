@@ -102,11 +102,44 @@ setData(id:any
 
   
   setLuz1() {
-  
-    console.log(this.casa);
     this.casa.Luz1 = '1';
-    
-    
+    this.casaService.updateCasa(this.casa).then(() => {
+      this.showToast('Casa updated');
+    }, err => {
+      this.showToast('There was a problem updating your casa :(');
+    });
+  }
+
+  setLuz2() {
+    this.casa.Luz2 = '1';
+    this.casaService.updateCasa(this.casa).then(() => {
+      this.showToast('Casa updated');
+    }, err => {
+      this.showToast('There was a problem updating your casa :(');
+    });
+  }
+
+  setLuz3() {
+    this.casa.Luz3 = '1';
+    this.casaService.updateCasa(this.casa).then(() => {
+      this.showToast('Casa updated');
+    }, err => {
+      this.showToast('There was a problem updating your casa :(');
+    });
+  }
+
+  setLuz4() {
+    this.casa.Luz4 = '1';
+    this.casaService.updateCasa(this.casa).then(() => {
+      this.showToast('Casa updated');
+    }, err => {
+      this.showToast('There was a problem updating your casa :(');
+    });
+  }
+
+
+  setLuz5() {
+    this.casa.Luz5 = '1';
     this.casaService.updateCasa(this.casa).then(() => {
       this.showToast('Casa updated');
     }, err => {
