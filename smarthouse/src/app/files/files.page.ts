@@ -12,7 +12,11 @@ import { Media, MediaObject } from '@ionic-native/media/ngx';
 import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { AngularFireStorage } from '@angular/fire/storage';
+<<<<<<< HEAD
 import { File, FileEntry }  from '@ionic-native/file/ngx';
+=======
+import{File,FileEntry} from '@ionic-native/file';
+>>>>>>> de17949937721424d1eea86fefbfa65a9c06b766
 import 'firebase/storage'; 
 
 
@@ -41,17 +45,31 @@ export class FilesPage implements OnInit {
     private storage: AngularFireStorage
   ) {}
  
+<<<<<<< HEAD
   async  ngOnInit() {
     
     this.plt.ready().then(() => {
       let path = this.archivo.dataDirectory;
       return this.archivo.checkDir(path, MEDIA_FOLDER_NAME).then(
+=======
+  async ngOnInit() {
+    
+    this.plt.ready().then(() => {
+      console.log('Se entra 0');
+      let path = this.file.dataDirectory;
+      this.file.checkDir(path, MEDIA_FOLDER_NAME).then(
+>>>>>>> de17949937721424d1eea86fefbfa65a9c06b766
         () => {
-          
+          console.log('Se entra 1');
           this.loadFiles();
         },
         err => {
+<<<<<<< HEAD
           this.archivo.createDir(path, MEDIA_FOLDER_NAME, false);
+=======
+          console.log('Se entra 2');
+          this.file.createDir(path, MEDIA_FOLDER_NAME, false);
+>>>>>>> de17949937721424d1eea86fefbfa65a9c06b766
         }
       );
     });
