@@ -21,7 +21,7 @@ import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import {  HttpModule} from '@angular/http';
 
-import { File } from '@ionic-native/file/ngx';
+import { File } from '@ionic-native/file';
 
 
 
