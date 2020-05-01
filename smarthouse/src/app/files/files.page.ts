@@ -7,13 +7,14 @@ import {
   MediaFile,
   CaptureError
 } from '@ionic-native/media-capture/ngx';
-import {  FileEntry } from '@ionic-native/File/ngx';
+
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { File } from '@ionic-native/file/ngx';
+import { File, FileEntry }  from '@ionic-native/file/ngx';
 import 'firebase/storage'; 
+
 
 const MEDIA_FOLDER_NAME = 'my_media';
  
@@ -30,7 +31,7 @@ export class FilesPage implements OnInit {
   constructor(
     private imagePicker: ImagePicker,
     private mediaCapture: MediaCapture,
-    private file: File,
+    private archivo: File,
     private media: Media,
     private streamingMedia: StreamingMedia,
     private photoViewer: PhotoViewer,
@@ -40,24 +41,24 @@ export class FilesPage implements OnInit {
     private storage: AngularFireStorage
   ) {}
  
-  ngOnInit() {
+  async  ngOnInit() {
     
     this.plt.ready().then(() => {
-      let path = this.file.dataDirectory;
-      this.file.checkDir(path, MEDIA_FOLDER_NAME).then(
+      let path = this.archivo.dataDirectory;
+      return this.archivo.checkDir(path, MEDIA_FOLDER_NAME).then(
         () => {
           
           this.loadFiles();
         },
         err => {
-          this.file.createDir(path, MEDIA_FOLDER_NAME, false);
+          this.archivo.createDir(path, MEDIA_FOLDER_NAME, false);
         }
       );
     });
   }
  
   loadFiles() {
-    this.file.listDir(this.file.dataDirectory, MEDIA_FOLDER_NAME).then(
+    this.archivo.listDir(this.archivo.dataDirectory, MEDIA_FOLDER_NAME).then(
       res => {
         this.files = res;
       },
@@ -165,9 +166,9 @@ export class FilesPage implements OnInit {
  
     const name = myPath.substr(myPath.lastIndexOf('/') + 1);
     const copyFrom = myPath.substr(0, myPath.lastIndexOf('/') + 1);
-    const copyTo = this.file.dataDirectory + MEDIA_FOLDER_NAME;
+    const copyTo = this.archivo.dataDirectory + MEDIA_FOLDER_NAME;
  
-    this.file.copyFile(copyFrom, name, copyTo, newName).then(
+    this.archivo.copyFile(copyFrom, name, copyTo, newName).then(
       success => {
         this.loadFiles();
       },
@@ -194,7 +195,7 @@ export class FilesPage implements OnInit {
  
   deleteFile(f: FileEntry) {
     const path = f.nativeURL.substr(0, f.nativeURL.lastIndexOf('/') + 1);
-    this.file.removeFile(path, f.name).then(() => {
+    this.archivo.removeFile(path, f.name).then(() => {
       this.loadFiles();
     }, err => console.log('error remove: ', err));
   }
@@ -203,7 +204,7 @@ export class FilesPage implements OnInit {
   async uploadFile(f: FileEntry) {
     const path = f.nativeURL.substr(0, f.nativeURL.lastIndexOf('/') + 1);
     const type = this.getMimeType(f.name.split('.').pop());
-    const buffer = await this.file.readAsArrayBuffer(path, f.name);
+    const buffer = await this.archivo.readAsArrayBuffer(path, f.name);
     const fileBlob = new Blob([buffer], type);
  
     const randomId = Math.random()
