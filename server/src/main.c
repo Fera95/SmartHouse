@@ -119,6 +119,7 @@ int main(int argc, char *argv[]) {
     client = (client_t*) malloc(sizeof(client_t));
     if(init_server(server, port)) exit(1);
     logg (3, "+++ Now listening on port ", itoc(port), " +++");
+    printf("+++ Now listening on port %d +++", port);
     signal(SIGINT, close_socket);
         
     devices_t *my_leds;
