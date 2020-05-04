@@ -4,7 +4,7 @@
 #include <time.h>
 
 //const char* read_path = "/home/josav09/Documents/C tests/fileReader/readme.txt";
-const char* write_path = "./logs/directories.log";
+const char* write_path = "./server.log";
 
 /** converts an integer to a char * that can be printed
  * \param num the number to convert
@@ -44,7 +44,6 @@ char read_char (char* read_path) {
  */
 void start_logg () {
 	FILE *fp;
-	system("[ -d logs ] || mkdir logs"); // creates folder for loggs if it doesn't exist
 	fp = fopen(write_path, "w");
 
 	if (fp == NULL) {
@@ -77,7 +76,7 @@ void logg (int num, ...) {
 	fp = fopen(write_path, "a"); // append mode
 
 	if (fp == NULL) {
-		perror("Error while opening the file.\n");
+		perror("Error while writting logg.\n");
 		exit(EXIT_FAILURE);
     }
 
