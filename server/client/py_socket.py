@@ -11,12 +11,13 @@ while (True):
 	s = socks.socksocket()
 	s.connect((HOST, PORT))
 
+	#msg format: "Bedroom:Bathroom:Hallway:Kitchen:Studio"
 	msg = input(">")
 
 	if (len(msg) == 11):
 		if ( (msg[0] == "\"" or msg[10] == "\"" ) and
              (msg[2] == ":" or msg[4] == ":" or msg[6] == ":" or msg[8] == ":" ) and
-             (msg[1] == "1" or msg[1] == "0" ) and 
+             (msg[1] == "1" or msg[1] == "0" ) and # LED
              (msg[3] == "1" or msg[3] == "0" ) and 
              (msg[5] == "1" or msg[5] == "0" ) and
              (msg[7] == "1" or msg[7] == "0" ) and 
@@ -29,11 +30,11 @@ while (True):
 			
 			if (server_response != ""):
 				parsed_json = json.loads(server_response)
-				print("Door 1: " + str(parsed_json['led_1']))
-				print("Door 2: " + str(parsed_json['led_2']))
-				print("Door 3: " + str(parsed_json['led_3']))
-				print("Door 4: " + str(parsed_json['led_4']))
-				print("Door 5: " + str(parsed_json['led_5']))
+				print(" Door Bedroom: " + str(parsed_json['door_1']))
+				print("Door Bathroom: " + str(parsed_json['door_2']))
+				print(" Door Hallway: " + str(parsed_json['door_3']))
+				print("  Door Kichen: " + str(parsed_json['door_4']))
+				print("  Door Studio: " + str(parsed_json['door_5']))
 			else:
 				print(server_response)
 		else:

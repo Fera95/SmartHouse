@@ -102,7 +102,7 @@ void digitalWrite(short pin, int value) {
 }
 
 /** Reads a 1 or 0 from a pin by reading it's value file
- * \param pin : the pin to initialize (Use pin name not pin number)
+ * \param pin : the pin to initialize (Use pin name not physical pin number)
  * \return read: the value read in the pin. The pinValue enum allows for HIGH or LOW
  */
 int digitalRead(short pin) {

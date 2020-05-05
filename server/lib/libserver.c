@@ -191,42 +191,42 @@ uint8_t set_params(const char *query, server_t *server, int function) {
  * \param code a binary-made 5 bit code to select the correct json
  */
 const char * jsonPicker (int code) {
-	switch (code) {
-		case  0: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 0, \"led_4\": 0, \"led_5\": 0 }");
-		case  1: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 0, \"led_4\": 0, \"led_5\": 1 }");
-		case  2: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 0, \"led_4\": 1, \"led_5\": 0 }");
-		case  3: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 0, \"led_4\": 1, \"led_5\": 1 }");
-		case  4: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 1, \"led_4\": 0, \"led_5\": 0 }");
-		case  5: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 1, \"led_4\": 0, \"led_5\": 1 }");
-		case  6: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 1, \"led_4\": 1, \"led_5\": 0 }");
-		case  7: return("{ \"led_1\": 0, \"led_2\": 0, \"led_3\": 1, \"led_4\": 1, \"led_5\": 1 }");
+	switch (code) {		
+        case  0: return("{ \"door_1\": 0, \"door_2\": 0, \"door_3\": 0, \"door_4\": 0, \"door_5\": 0 }");
+		case  1: return("{ \"door_1\": 0, \"door_2\": 0, \"door_3\": 0, \"door_4\": 0, \"door_5\": 1 }");
+		case  2: return("{ \"door_1\": 0, \"door_2\": 0, \"door_3\": 0, \"door_4\": 1, \"door_5\": 0 }");
+		case  3: return("{ \"door_1\": 0, \"door_2\": 0, \"door_3\": 0, \"door_4\": 1, \"door_5\": 1 }");
+		case  4: return("{ \"door_1\": 0, \"door_2\": 0, \"door_3\": 1, \"door_4\": 0, \"door_5\": 0 }");
+		case  5: return("{ \"door_1\": 0, \"door_2\": 0, \"door_3\": 1, \"door_4\": 0, \"door_5\": 1 }");
+		case  6: return("{ \"door_1\": 0, \"door_2\": 0, \"door_3\": 1, \"door_4\": 1, \"door_5\": 0 }");
+		case  7: return("{ \"door_1\": 0, \"door_2\": 0, \"door_3\": 1, \"door_4\": 1, \"door_5\": 1 }");
 		
-		case  8: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 0, \"led_4\": 0, \"led_5\": 0 }");
-		case  9: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 0, \"led_4\": 0, \"led_5\": 1 }");
-		case 10: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 0, \"led_4\": 1, \"led_5\": 0 }");
-		case 11: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 0, \"led_4\": 1, \"led_5\": 1 }");
-		case 12: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 1, \"led_4\": 0, \"led_5\": 0 }");
-		case 13: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 1, \"led_4\": 0, \"led_5\": 1 }");
-		case 14: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 1, \"led_4\": 1, \"led_5\": 0 }");
-		case 15: return("{ \"led_1\": 0, \"led_2\": 1, \"led_3\": 1, \"led_4\": 1, \"led_5\": 1 }");
+		case  8: return("{ \"door_1\": 0, \"door_2\": 1, \"door_3\": 0, \"door_4\": 0, \"door_5\": 0 }");
+		case  9: return("{ \"door_1\": 0, \"door_2\": 1, \"door_3\": 0, \"door_4\": 0, \"door_5\": 1 }");
+		case 10: return("{ \"door_1\": 0, \"door_2\": 1, \"door_3\": 0, \"door_4\": 1, \"door_5\": 0 }");
+		case 11: return("{ \"door_1\": 0, \"door_2\": 1, \"door_3\": 0, \"door_4\": 1, \"door_5\": 1 }");
+		case 12: return("{ \"door_1\": 0, \"door_2\": 1, \"door_3\": 1, \"door_4\": 0, \"door_5\": 0 }");
+		case 13: return("{ \"door_1\": 0, \"door_2\": 1, \"door_3\": 1, \"door_4\": 0, \"door_5\": 1 }");
+		case 14: return("{ \"door_1\": 0, \"door_2\": 1, \"door_3\": 1, \"door_4\": 1, \"door_5\": 0 }");
+		case 15: return("{ \"door_1\": 0, \"door_2\": 1, \"door_3\": 1, \"door_4\": 1, \"door_5\": 1 }");
 		
-		case 16: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 0, \"led_4\": 0, \"led_5\": 0 }");
-		case 17: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 0, \"led_4\": 0, \"led_5\": 1 }");
-		case 18: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 0, \"led_4\": 1, \"led_5\": 0 }");
-		case 19: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 0, \"led_4\": 1, \"led_5\": 1 }");
-		case 20: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 1, \"led_4\": 0, \"led_5\": 0 }");
-		case 21: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 1, \"led_4\": 0, \"led_5\": 1 }");
-		case 22: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 1, \"led_4\": 1, \"led_5\": 0 }");
-		case 23: return("{ \"led_1\": 1, \"led_2\": 0, \"led_3\": 1, \"led_4\": 1, \"led_5\": 1 }");
+		case 16: return("{ \"door_1\": 1, \"door_2\": 0, \"door_3\": 0, \"door_4\": 0, \"door_5\": 0 }");
+		case 17: return("{ \"door_1\": 1, \"door_2\": 0, \"door_3\": 0, \"door_4\": 0, \"door_5\": 1 }");
+		case 18: return("{ \"door_1\": 1, \"door_2\": 0, \"door_3\": 0, \"door_4\": 1, \"door_5\": 0 }");
+		case 19: return("{ \"door_1\": 1, \"door_2\": 0, \"door_3\": 0, \"door_4\": 1, \"door_5\": 1 }");
+		case 20: return("{ \"door_1\": 1, \"door_2\": 0, \"door_3\": 1, \"door_4\": 0, \"door_5\": 0 }");
+		case 21: return("{ \"door_1\": 1, \"door_2\": 0, \"door_3\": 1, \"door_4\": 0, \"door_5\": 1 }");
+		case 22: return("{ \"door_1\": 1, \"door_2\": 0, \"door_3\": 1, \"door_4\": 1, \"door_5\": 0 }");
+		case 23: return("{ \"door_1\": 1, \"door_2\": 0, \"door_3\": 1, \"door_4\": 1, \"door_5\": 1 }");
 		
-		case 24: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 0, \"led_4\": 0, \"led_5\": 0 }");
-		case 25: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 0, \"led_4\": 0, \"led_5\": 1 }");
-		case 26: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 0, \"led_4\": 1, \"led_5\": 0 }");
-		case 27: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 0, \"led_4\": 1, \"led_5\": 1 }");
-		case 28: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 1, \"led_4\": 0, \"led_5\": 0 }");
-		case 29: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 1, \"led_4\": 0, \"led_5\": 1 }");
-		case 30: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 1, \"led_4\": 1, \"led_5\": 0 }");
-		case 31: return("{ \"led_1\": 1, \"led_2\": 1, \"led_3\": 1, \"led_4\": 1, \"led_5\": 1 }");
+		case 24: return("{ \"door_1\": 1, \"door_2\": 1, \"door_3\": 0, \"door_4\": 0, \"door_5\": 0 }");
+		case 25: return("{ \"door_1\": 1, \"door_2\": 1, \"door_3\": 0, \"door_4\": 0, \"door_5\": 1 }");
+		case 26: return("{ \"door_1\": 1, \"door_2\": 1, \"door_3\": 0, \"door_4\": 1, \"door_5\": 0 }");
+		case 27: return("{ \"door_1\": 1, \"door_2\": 1, \"door_3\": 0, \"door_4\": 1, \"door_5\": 1 }");
+		case 28: return("{ \"door_1\": 1, \"door_2\": 1, \"door_3\": 1, \"door_4\": 0, \"door_5\": 0 }");
+		case 29: return("{ \"door_1\": 1, \"door_2\": 1, \"door_3\": 1, \"door_4\": 0, \"door_5\": 1 }");
+		case 30: return("{ \"door_1\": 1, \"door_2\": 1, \"door_3\": 1, \"door_4\": 1, \"door_5\": 0 }");
+		case 31: return("{ \"door_1\": 1, \"door_2\": 1, \"door_3\": 1, \"door_4\": 1, \"door_5\": 1 }");
 		default: return("{\"Status\": \"Ok\"}");
 	}
 }

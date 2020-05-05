@@ -75,7 +75,6 @@ void initialize_daemon(){
     logg(1, "Daemon: SHserver completed initializing daemon");
 }
 
-
 void close_socket(){
     logg(1, "+++ Killing +++");
     close_server(server);
@@ -113,8 +112,8 @@ int main(int argc, char *argv[]) {
 
     // init log
 	start_logg();
-
-    //init_pins();
+    init_pins();
+    
     server = (server_t*) malloc(sizeof(server_t));
     client = (client_t*) malloc(sizeof(client_t));
     if(init_server(server, port)) exit(1);
