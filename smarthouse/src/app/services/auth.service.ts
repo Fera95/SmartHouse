@@ -15,14 +15,14 @@ export class AuthService {
    }   //login
     async onLogin (user:User){
       try {
-        return await this.afAuth.signInWithEmailAndPassword(user.email,user.password); 
+        return await this.afAuth.auth.signInWithEmailAndPassword(user.email,user.password); 
       } catch (error) {
         console.log('Error on Login',error);
       }
     } //register 
    async OnRegister(user:User){
      try{ 
-       return await this.afAuth.createUserWithEmailAndPassword(
+       return await this.afAuth.auth.createUserWithEmailAndPassword(
          user.email,
          user.password
          );

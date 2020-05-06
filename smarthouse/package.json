@@ -75,7 +75,8 @@
     "protractor": "~5.4.4",
     "ts-node": "~8.9.1",
     "tslint": "~6.1.2",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "webpack-cli": "^3.3.11"
   },
   "description": "An Ionic project",
   "config": {
