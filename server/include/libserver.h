@@ -17,7 +17,7 @@
 							// 3V3 power
 #define led_kitchen	2		// GPIO2
 #define led_hallway 3		// GPIO3
-#define led_bedroom	4		// GPIO4
+#define led_bedroom 4		// GPIO4
 							// GND
 #define led_bathroom 17		// GPIO17
 #define led_studio 27		// GPIO27
