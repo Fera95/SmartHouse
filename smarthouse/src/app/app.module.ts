@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from './../environments/environment';
-import {AngularFirestoreModule,FirestoreSettingsToken, AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestoreModule,SETTINGS, AngularFirestore} from '@angular/fire/firestore';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx'
@@ -21,8 +21,7 @@ import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import {  HttpModule} from '@angular/http';
 
-import { File } from '@ionic-native/file/ngx';
-
+import { File , FileEntry } from '@ionic-native/file/ngx';
 
 
 @NgModule({
@@ -33,13 +32,12 @@ import { File } from '@ionic-native/file/ngx';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     AngularFireAuthModule,
-    NgbModule.forRoot(),
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    {provide: FirestoreSettingsToken, useValue:{}},
+    {provide: SETTINGS, useValue:{}},
     ImagePicker,
     MediaCapture,
     Media,
