@@ -14,12 +14,11 @@ import {
   MediaFile,
   CaptureError
 } from '@ionic-native/media-capture/ngx';
-import {  FileEntry } from '@ionic-native/File/ngx';
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { File } from '@ionic-native/file/ngx';
+import { File ,FileEntry} from '@ionic-native/file';
 import 'firebase/storage'; 
  
 @Component({
