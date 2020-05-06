@@ -20,7 +20,7 @@ export class HomePage {
 
     onLogout(){
       console.log('Logout!');
-        this.afAuth.auth.signOut();
+        this.afAuth.signOut();
         this.router.navigateByUrl('/login');
         this.Theme.cambiarTema("2");
     }
