@@ -7,13 +7,14 @@ import {
   MediaFile,
   CaptureError
 } from '@ionic-native/media-capture/ngx';
-import {  FileEntry } from '@ionic-native/File/ngx';
+
 import { Media, MediaObject } from '@ionic-native/media/ngx';
 import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { File } from '@ionic-native/file/ngx';
+import { File, FileEntry }  from '@ionic-native/file/ngx';
 import 'firebase/storage'; 
+
 
 const MEDIA_FOLDER_NAME = 'my_media';
  
@@ -40,16 +41,18 @@ export class FilesPage implements OnInit {
     private storage: AngularFireStorage
   ) {}
  
-  ngOnInit() {
+  async ngOnInit() {
     
     this.plt.ready().then(() => {
+      console.log('Se entra 0');
       let path = this.file.dataDirectory;
       this.file.checkDir(path, MEDIA_FOLDER_NAME).then(
         () => {
-          
+          console.log('Se entra 1');
           this.loadFiles();
         },
         err => {
+          console.log('Se entra 2');
           this.file.createDir(path, MEDIA_FOLDER_NAME, false);
         }
       );
