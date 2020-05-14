@@ -1,5 +1,5 @@
 CC = gcc -o
-EXE = main
+EXE = SHServer86
 SERVER_LIB = libserver.a
 
 LIB_DIR = ../lib/
@@ -11,5 +11,5 @@ LIBS = $(LIB_DIR)$(SERVER_LIB)
 done: $(EXE)
 
 $(EXE) : $(EXE).c
-		$(CC) $(BIN_DIR)$(EXE) -g $(EXE).c $(LIBS) -I$(INCLUDE_DIR) -lm
+		$(CC) $(BIN_DIR)$(EXE) -g $(EXE).c $(LIBS) -I$(INCLUDE_DIR) -pthread
 
