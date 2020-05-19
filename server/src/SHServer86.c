@@ -51,7 +51,7 @@ void init_pins () {
 
 
 int start_client() {
-    system("python3 ./bin/py_socket.py"); // For non raspberry pi use
+    system("python3 ./src/py_socket.py"); // For non raspberry pi use
     //system("python3 ./py_socket.py");
     return 0;
 }
