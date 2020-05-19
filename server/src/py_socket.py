@@ -157,6 +157,12 @@ while (True):
                 print(" Door Hallway: " + str(parsed_json['led_3']))
                 print("  Door Kichen: " + str(parsed_json['led_4']))
                 print("  Door Studio: " + str(parsed_json['led_5']))
+                val_upd = db.collection(COLNAME).document(DOCNAME)
+                val_upd.update({'Puerta1': str(parsed_json['led_1'])})
+                val_upd.update({'Puerta2': str(parsed_json['led_2'])})
+                val_upd.update({'Puerta3': str(parsed_json['led_3'])})
+                val_upd.update({'Puerta4': str(parsed_json['led_4'])})
+                val_upd.update({'Puerta5': str(parsed_json['led_5'])})
             else:
                 print(server_response)
         else:
