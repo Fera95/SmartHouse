@@ -130,7 +130,7 @@ while (True):
 			analizarPuerta(id,status)
 	global msg
 	msg='"'+led1+':'+led2+':'+led3+':'+led4+':'+led5+'"'
-	print(msg)
+	#print(msg)
 	
 	#msg format: "Bedroom:Bathroom:Hallway:Kitchen:Studio"
 	#hola = input(">")
