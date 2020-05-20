@@ -3,8 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {AuthGuard} from './guards/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
-  canActivate : [AuthGuard]
+  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
 },
   {
     path: 'register',
@@ -16,8 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule),
-    canActivate : [AuthGuard]
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
   {
     path: 'casa-details',
@@ -26,7 +24,8 @@ const routes: Routes = [
   {
     path: 'casa-details/:id',
     loadChildren: () => import('./pages/casa-details/casa-details.module').then( m => m.CasaDetailsPageModule)
-  },  {
+  },
+  {
     path: 'files',
     loadChildren: () => import('./files/files.module').then( m => m.FilesPageModule)
   },

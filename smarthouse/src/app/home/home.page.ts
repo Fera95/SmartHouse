@@ -19,10 +19,12 @@ export class HomePage {
     }
 
     onLogout(){
-      console.log('Logout!');
+      this.afAuth.auth.signOut();
+       console.log('Logout!');
         this.afAuth.auth.signOut();
         this.router.navigateByUrl('/login');
         this.Theme.cambiarTema("2");
+      
     }
 
 }

@@ -11,6 +11,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
   user: User = new User();
+  
   constructor(private toastCtrl: ToastController, private router: Router, private authSvc: AuthService) { }
 
   ngOnInit() {
@@ -20,9 +21,10 @@ export class LoginPage implements OnInit {
     const user = await this.authSvc.onLogin(this.user);
   
   if(user){
+    this.router.navigateByUrl('/');
     this.showToast('Loggeado');
     console.log('Loggeo exitoso');
-    this.router.navigateByUrl('/');
+    
   }
   else{
     

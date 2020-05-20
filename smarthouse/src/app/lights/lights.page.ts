@@ -100,52 +100,130 @@ setData(id:any
 
 }
 
+ 
+
   
   setLuz1() {
+  
+    var luz1 = this.casa.Luz1;
+    let dato = luz1.toString();
+   if(dato === "0"){
     this.casa.Luz1 = '1';
     this.casaService.updateCasa(this.casa).then(() => {
       this.showToast('Casa updated');
     }, err => {
       this.showToast('There was a problem updating your casa :(');
     });
+    ;
+   }
+   else{
+    this.casa.Luz1 = '0';
+    this.casaService.updateCasa(this.casa).then(() => {
+      this.showToast('Casa updated');
+    }, err => {
+      this.showToast('There was a problem updating your casa :(');
+    });
+    ;
+   }
   }
 
   setLuz2() {
+  
+    var luz2 = this.casa.Luz2;
+    let dato = luz2.toString();
+   if(dato === "0"){
     this.casa.Luz2 = '1';
     this.casaService.updateCasa(this.casa).then(() => {
       this.showToast('Casa updated');
     }, err => {
       this.showToast('There was a problem updating your casa :(');
     });
+    ;
+   }
+   else{
+    this.casa.Luz2 = '0';
+    this.casaService.updateCasa(this.casa).then(() => {
+      this.showToast('Casa updated');
+    }, err => {
+      this.showToast('There was a problem updating your casa :(');
+    });
+    ;
+   }
   }
 
   setLuz3() {
+  
+    var luz3 = this.casa.Luz3;
+    let dato = luz3.toString();
+   if(dato === "0"){
     this.casa.Luz3 = '1';
     this.casaService.updateCasa(this.casa).then(() => {
       this.showToast('Casa updated');
     }, err => {
       this.showToast('There was a problem updating your casa :(');
     });
+    ;
+   }
+   else{
+    this.casa.Luz3 = '0';
+    this.casaService.updateCasa(this.casa).then(() => {
+      this.showToast('Casa updated');
+    }, err => {
+      this.showToast('There was a problem updating your casa :(');
+    });
+    ;
+   }
   }
 
   setLuz4() {
+  
+    var luz4 = this.casa.Luz4;
+    let dato = luz4.toString();
+   if(dato === "0"){
     this.casa.Luz4 = '1';
     this.casaService.updateCasa(this.casa).then(() => {
       this.showToast('Casa updated');
     }, err => {
       this.showToast('There was a problem updating your casa :(');
     });
+    ;
+   }
+   else{
+    this.casa.Luz4 = '0';
+    this.casaService.updateCasa(this.casa).then(() => {
+      this.showToast('Casa updated');
+    }, err => {
+      this.showToast('There was a problem updating your casa :(');
+    });
+    ;
+   }
   }
 
 
   setLuz5() {
+  
+    var luz5 = this.casa.Luz5;
+    let dato = luz5.toString();
+   if(dato === "0"){
     this.casa.Luz5 = '1';
     this.casaService.updateCasa(this.casa).then(() => {
       this.showToast('Casa updated');
     }, err => {
       this.showToast('There was a problem updating your casa :(');
     });
+    ;
+   }
+   else{
+    this.casa.Luz5 = '0';
+    this.casaService.updateCasa(this.casa).then(() => {
+      this.showToast('Casa updated');
+    }, err => {
+      this.showToast('There was a problem updating your casa :(');
+    });
+    ;
+   }
   }
+
 
   showToast(msg) {
     this.toastCtrl.create({
