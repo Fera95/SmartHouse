@@ -6,6 +6,7 @@ import { analytics } from 'firebase';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { DomSanitizer } from '@angular/platform-browser';
  
 
 @Component({
@@ -50,7 +51,7 @@ export class LightsPage implements OnInit {
 
   
   constructor(private theme: ThemeService,private casaService: CasaService,private activatedRoute: ActivatedRoute, 
-    private toastCtrl: ToastController, private router: Router) { }
+    private toastCtrl: ToastController, private router: Router,private sanitizer : DomSanitizer) { }
 
   ngOnInit() {
     this.casas = this.casaService.getCasas();
@@ -224,6 +225,45 @@ setData(id:any
    }
   }
 
+  getDynamicLuz1(){
+    if(this.luz1 == "1"){
+      return this.sanitizer.bypassSecurityTrustStyle('--Toggle1:block');
+    }else{
+      return this.sanitizer.bypassSecurityTrustStyle('--Toggle1:none');
+    } 
+  }
+
+  getDynamicLuz2(){
+    if(this.luz2 == "1"){
+      return this.sanitizer.bypassSecurityTrustStyle('--Toggle2:block');
+    }else{
+      return this.sanitizer.bypassSecurityTrustStyle('--Toggle2:none');
+    } 
+  }
+
+  getDynamicLuz3(){
+    if(this.luz3 == "1"){
+      return this.sanitizer.bypassSecurityTrustStyle('--Toggle3:block');
+    }else{
+      return this.sanitizer.bypassSecurityTrustStyle('--Toggle3:none');
+    } 
+  }
+
+  getDynamicLuz4(){
+    if(this.luz4 == "1"){
+      return this.sanitizer.bypassSecurityTrustStyle('--Toggle4:block');
+    }else{
+      return this.sanitizer.bypassSecurityTrustStyle('--Toggle4:none');
+    } 
+  }
+
+  getDynamicLuz5(){
+    if(this.luz5 == "1"){
+      return this.sanitizer.bypassSecurityTrustStyle('--Toggle5:block');
+    }else{
+      return this.sanitizer.bypassSecurityTrustStyle('--Toggle5:none');
+    } 
+  }
 
   showToast(msg) {
     this.toastCtrl.create({
