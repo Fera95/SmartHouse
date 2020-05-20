@@ -12,6 +12,14 @@
 @import "bootstrap";
 
 
+ion-toggle {
+  --background: white;
+  --background-checked: white;
+
+  --handle-background: #5260ff;
+  --handle-background-checked: #5260ff;
+}
+
 
 :root {
 
