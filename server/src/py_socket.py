@@ -25,7 +25,6 @@ def showAll():
 	allDocs = db.collection(COLNAME).stream()
 	for doc in allDocs:
 		allDB='{} => {}'.format(doc.id, doc.to_dict())
-	print(allDB)
 	makeReadFile(allDB)	
 
 # Hace un archivo con el estado de la base
@@ -44,10 +43,10 @@ def listenDocs(time):
 	# Callback
 	def on_snapshot(doc_snapshot, changes, read_time):
 		for doc in doc_snapshot:
-			print(u'\n Received document snapshot: {}\n'.format(doc.id))
+			#print(u'\n Received document snapshot: {}\n'.format(doc.id))
 
 			showAll()
-			print('\n')
+			#print('\n')
 			readFile()
 
 	doc_ref = db.collection(COLNAME).document(DOCNAME)
@@ -118,7 +117,7 @@ while (True):
 	cadena = f.read()
 	f.close()
 
-	print(cadena)
+	#print(cadena)
 
 	for contador in range(26,169):
 		if cadena[contador]=='L':
@@ -131,7 +130,7 @@ while (True):
 			analizarPuerta(id,status)
 	global msg
 	msg='"'+led1+':'+led2+':'+led3+':'+led4+':'+led5+'"'
-	print(msg)
+	#print(msg)
 	
 	#msg format: "Bedroom:Bathroom:Hallway:Kitchen:Studio"
 	#hola = input(">")
