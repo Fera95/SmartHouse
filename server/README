@@ -1,3 +1,4 @@
 mkdir build; cd build	
+. /opt/poky/2.5.1/environment-setup-cortexa7hf-neon-vfpv4-poky-linux-gnueabi -c
 cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/home/josav09/Documents/Git/SmartHouse/server/build/usr
 make
