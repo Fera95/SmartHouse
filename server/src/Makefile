@@ -10,7 +10,7 @@ CFLAGS = -I../include
 LDFLAGS = -L../lib 
 
 main: $(SRC)
-		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBRASPIO) $(LIBSERVER) $(LIBLOGGER) -pthread
+		$(CC) -o $(OUT) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBRASPIO) $(LIBSERVER) $(LIBLOGGER)
 
 clean:
 		rm main.o

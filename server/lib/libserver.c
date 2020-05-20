@@ -237,53 +237,61 @@ uint8_t process_query(client_t *client, server_t *server) {
 	char str[80];
 	strcpy(str, query);
 
-    // Parse expected query
-	char *token;
-    token = strtok(str, s);
-	server->leds->bedroom = atoi(token);
-	token = strtok(NULL, s);
-	server->leds->bathroom = atoi(token);
-	token = strtok(NULL, s);
-	server->leds->hallway = atoi(token);
-	token = strtok(NULL, s);
-	server->leds->kitchen = atoi(token);
-	token = strtok(NULL, s);
-	server->leds->studio = atoi(token);
+    // Check that query is of the right size
+    if (sizeof(query) != 8) {
 
-    digitalWrite(led_bedroom, server->leds->bedroom);
-    digitalWrite(led_bathroom, server->leds->bathroom);
-    digitalWrite(led_hallway, server->leds->hallway);
-    digitalWrite(led_kitchen, server->leds->kitchen);
-    digitalWrite(led_studio, server->leds->studio);
-/*
-    system("clear");
-    printf("+++ Client sent: +++ \n");
-	printf(" led bedroom: %d\n", server->leds->bedroom);
-	printf("led bathroom: %d\n", server->leds->bathroom);
-	printf(" led hallway: %d\n", server->leds->hallway);
-	printf(" led kitchen: %d\n", server->leds->kitchen);
-	printf("  led studio: %d\n", server->leds->studio);
-*/
-    logg(1, "+++ Message received +++");
+        // Parse expected query
+        char *token;
+        token = strtok(str, s);
+        server->leds->bedroom = atoi(token);
+        token = strtok(NULL, s);
+        server->leds->bathroom = atoi(token);
+        token = strtok(NULL, s);
+        server->leds->hallway = atoi(token);
+        token = strtok(NULL, s);
+        server->leds->kitchen = atoi(token);
+        token = strtok(NULL, s);
+        server->leds->studio = atoi(token);
 
-    server->doors->bedroom = digitalRead(door_bedroom);
-    server->doors->bathroom = digitalRead(door_bathroom);
-    server->doors->hallway = digitalRead(door_hallway);
-    server->doors->kitchen = digitalRead(door_kitchen);
-    server->doors->studio = digitalRead(door_studio);
+        digitalWrite(led_bedroom, server->leds->bedroom);
+        digitalWrite(led_bathroom, server->leds->bathroom);
+        digitalWrite(led_hallway, server->leds->hallway);
+        digitalWrite(led_kitchen, server->leds->kitchen);
+        digitalWrite(led_studio, server->leds->studio);
+    /*
+        system("clear");
+        printf("+++ Client sent: +++ \n");
+        printf(" led bedroom: %d\n", server->leds->bedroom);
+        printf("led bathroom: %d\n", server->leds->bathroom);
+        printf(" led hallway: %d\n", server->leds->hallway);
+        printf(" led kitchen: %d\n", server->leds->kitchen);
+        printf("  led studio: %d\n", server->leds->studio);
+    */
+        logg(1, "+++ Message received +++");
 
-    if(strcmp(query, "/dummy") == 0) {
-        send_text(client, "Im dummy");
-    } else if(strncmp(query, "/restart", 8) == 0) {
-        init_devices(server);
-    } else {
-        const char * json_msg = jsonPicker( server->doors->bedroom*16+
-                                            server->doors->bathroom*8+
-                                            server->doors->hallway*4+
-                                            server->doors->kitchen*2+
-                                            server->doors->studio*1);
-        send_json(client, json_msg);
+        server->doors->bedroom = digitalRead(door_bedroom);
+        server->doors->bathroom = digitalRead(door_bathroom);
+        server->doors->hallway = digitalRead(door_hallway);
+        server->doors->kitchen = digitalRead(door_kitchen);
+        server->doors->studio = digitalRead(door_studio);
+
+        if(strcmp(query, "/dummy") == 0) {
+            send_text(client, "Im dummy");
+        } else if(strncmp(query, "/restart", 8) == 0) {
+            init_devices(server);
+        } else {
+            const char * json_msg = jsonPicker( server->doors->bedroom*16+
+                                                server->doors->bathroom*8+
+                                                server->doors->hallway*4+
+                                                server->doors->kitchen*2+
+                                                server->doors->studio*1);
+            send_json(client, json_msg);
+        }
     }
+    else {
+        ; // Ignore request
+    }
+    
 }
 
 uint8_t send_text(client_t *client, const char *text) {
