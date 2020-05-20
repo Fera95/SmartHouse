@@ -1,0 +1,3 @@
+mkdir build; cd build	
+cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/home/josav09/Documents/Git/SmartHouse/server/build/usr
+make
